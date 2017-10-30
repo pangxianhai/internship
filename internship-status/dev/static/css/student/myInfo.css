@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.student_info {
+    margin-bottom: 20px;
+}
+
+.student_info .title {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.student_info table {
+    border-collapse: collapse;
+}
+
+.student_info table td {
+    height: 20px;
+    width: 180px;
+}
+
+.student_info table .name {
+    text-align: right;
+    width: 110px;
+}
+
+.student_info .update_div {
+    width: 243px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="发放实习考评表"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/assessment/sendAssessment.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/redactor.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/student/assessment/sendAssessment.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="send_assessment_panel">
+    <form id="sendAssessmentForm">
+        <input name="studentId" value="${student.id}" style="display: none"/>
+        <div class="assessment_tips">实习导师指导意见：</div>
+        <div class="tutor_remark_content umeditor" id="tutorRemark" name="tutorRemark"></div>
+        <div class="assessment_score">
+            <span class="_tips">实习导师指导建议成绩：</span>
+            <input class="_input" name="tutorScore" type="text"/>
+        </div>
+        <div class="assessment_submit">
+            <a id="assessmentSubmitBtn" href="javascript:void(0)" class="button">提交</a>
+        </div>
+    </form>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

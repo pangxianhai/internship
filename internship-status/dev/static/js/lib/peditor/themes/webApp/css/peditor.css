@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.ui_ed_container {
+    position: relative;
+    border: 1px solid #d4d4d4;
+    box-shadow: 2px 2px 5px #d3d6da;
+    background-color: #fff;
+}
+
+.ui_ed_toolbar {
+    overflow: hidden;
+}
+
+.ui_ed_body {
+    overflow: hidden;
+    outline: none;
+}

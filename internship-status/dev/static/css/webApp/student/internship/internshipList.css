@@ -1,0 +1,53 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.student_internship_panel {
+    overflow: hidden;
+}
+
+.student_internship_panel .internship_list {
+    overflow: hidden;
+}
+
+.student_internship_panel .internship_list .internship_node {
+    padding: 0.8rem 0 0.8rem 0;
+    border-bottom: 1px solid #e4e4e4;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.student_internship_panel .internship_list .internship_node .internship_record {
+    overflow: hidden;
+}
+
+.student_internship_panel .internship_list .internship_node .internship_record li {
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    font-size: 16px;
+}
+
+.student_internship_panel .internship_list .internship_node .internship_record li ._score {
+    padding-left: 1.62rem;
+}
+
+.student_internship_panel .internship_list .internship_node .internship_record li i {
+    font-style: normal;
+    padding-right: 1rem;
+    color: #666;
+    float: right;
+}
+
+.student_internship_panel .internship_list .internship_node .internship_message {
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.student_internship_panel .internship_list .internship_node .internship_message li {
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    color: #888;
+}

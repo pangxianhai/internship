@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="实习信息"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/internship/internshipList.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/student/internship/internshipList.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<div class="student_internship_panel">
+    <#include "/webApp/header.html" />
+    <ul id="studentInternship" class="internship_list">
+    </ul>
+</div>
+<#include "/webApp/footer.html" />
+
+<input id="show_header_left" type="hidden" value="false"/>
+<input id="footerMenuId" type="hidden" value="student"/>
+</body>
+</html>

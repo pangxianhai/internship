@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.companyInfo {
+    line-height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.companyInfo table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.companyInfo table .title {
+    text-align: right;
+    padding-left: 10px;
+}
+
+.companyInfo .internship_desc .desc {
+    border: 1px solid #aaa;
+    margin-bottom: 8px;
+    min-height: 450px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.companyInfo .update_div {
+    margin-bottom: 8px;
+    margin-left: 280px;
+}

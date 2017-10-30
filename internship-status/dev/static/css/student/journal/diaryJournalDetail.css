@@ -1,0 +1,45 @@
+@charset "UTF-8";
+.diary-journal-info {
+    margin-left: 10px;
+    width: 900px;
+}
+
+.diary-journal-info .journal-title {
+    overflow: hidden;
+
+}
+
+.diary-journal-info .journal-title .print-div {
+    float: right;
+    margin-right: 20px;
+}
+
+.diary-journal-info .journal-title table {
+    width: 60%;
+    float: left;
+}
+
+.diary-journal-info .journal-title table td {
+    height: 30px;
+}
+
+.diary-journal-info .journal-title table td.tips {
+    text-align: right;
+}
+
+.diary-journal-info .diary-journal-info-content .journal-tips {
+    line-height: 35px;
+}
+
+.diary-journal-info .diary-journal-info-content .journal-content {
+    margin-left: 10px;
+    border: 1px solid #aaa;
+    padding: 5px 1px 5px 5px;
+    min-height: 250px;
+    margin-bottom: 5px;
+}
+
+.update-diary-journal-btn {
+    margin: 15px auto 8px auto;
+    width: 243px;
+}

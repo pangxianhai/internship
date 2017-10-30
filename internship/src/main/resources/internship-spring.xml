@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd "
+       default-lazy-init="false">
+
+    <context:component-scan base-package="cn.edu.swufe.lawschool.internship"/>
+
+    <context:property-placeholder location="classpath*:jdbc.properties" ignore-unresolvable="true"/>
+
+    <bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="driverUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="alias" value="${jdbc.alias}"/>
+        <property name="prototypeCount" value="0"/>
+        <property name="maximumConnectionCount" value="50"/>
+        <property name="minimumConnectionCount" value="2"/>
+        <property name="simultaneousBuildThrottle" value="50"/>
+        <property name="houseKeepingTestSql" value="select CURRENT_DATE"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="accomplish*" propagation="REQUIRED"/>
+            <tx:method name="move*" propagation="REQUIRED"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:sqlmap_config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property value="cn.edu.swufe.lawschool.internship.*.mapper" name="basePackage"/>
+    </bean>
+
+    <aop:config>
+        <aop:pointcut id="transaction"
+                      expression="execution(public * cn.edu.swufe.lawschool.internship.*.service.*.*(..))"/>
+        <aop:advisor pointcut-ref="transaction" advice-ref="txAdvice"/>
+    </aop:config>
+
+    <bean class="cn.edu.swufe.lawschool.common.logger.LoggerInjector"/>
+</beans>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="请假"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/leave/leave.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/student/leave/leave.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="leave_panel">
+    <div class="go_leave_list">
+        <a class="button" href="/webApp/student/leave/list.htm?returnUrl=${locationURL}">请假记录&nbsp;&gt;</a>
+    </div>
+    <div class="leave_div">
+        <form id="leave_form" action="">
+            <p class="title">申请请假：</p>
+            <ul class="leave_time">
+                <li>开始时间:</li>
+                <li><input id="begin_time" name="beginDay" type="text"/></li>
+                <li>
+                    <select name="beginTime">
+                        <#list timeInterval as t>
+                            <option value="${t.code}">${t.desc}</option>
+                        </#list>
+                    </select>
+                </li>
+            </ul>
+            <ul class="leave_time">
+                <li>结束时间:</li>
+                <li><input id="end_time" name="endDay" type="text"/></li>
+                <li>
+                    <select name="endTime">
+                        <#list timeInterval as t>
+                            <option value="${t.code}">${t.desc}</option>
+                        </#list>
+                    </select>
+                </li>
+            </ul>
+            <ul class="leave_time">
+                <li>请假类型:</li>
+                <li class="leave_type_select">
+                    <select name="leaveType">
+                        <#list leaveTypes as l>
+                            <option value="${l.code}">${l.desc}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li>&nbsp;</li>
+            </ul>
+            <ul class="leave_reason">
+                <li class="l_title">请假原因:</li>
+                <li class="l_content">
+                    <input name="reason" type="text"/>
+                </li>
+            </ul>
+            <button type="button" class="button200 leave_btn">提交</button>
+        </form>
+    </div>
+</div>
+<div id="leave_day_picker"></div>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="用户列表"/>
+    <#include "/meta.html" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/user/user.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/user/user_list.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} 用户列表</span>
+            <hr/>
+        </div>
+        <div class="user_info">
+            <div class="search">
+                <form id="search_form">
+                    <table>
+                        <tr>
+                            <td>用户名:</td>
+                            <td><input name="userName" type="text" value="${userInfo.userName}"/></td>
+                            <td>姓名:</td>
+                            <td><input name="name" type="text" value="${userInfo.name}"/></td>
+                            <td>联系方式:</td>
+                            <td><input name="phone" type="text" value="${userInfo.phone}"/></td>
+                            <td>用户类型:</td>
+                            <td>
+                                <select name="userTypeCode">
+                                    <option value="">全部</option>
+                                    <#list userTypeList as ut>
+                                        <option value="${ut.code}">${ut.desc}</option>
+                                    </#list>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="search_btn">
+                    <a id="search_action" class="btn45" href="javascript:void(0)">搜索</a>
+                </div>
+            </div>
+            <table class="content_table">
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>联系方式</th>
+                    <th>用户类型</th>
+                    <th>注册时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="u_data"></tbody>
+            </table>
+            <div class="page_list"></div>
+        </div>
+    </div>
+</div>
+<input id="menu_id" value="user" style="display: none"/>
+<#include "/footer.html" />
+</body>
+</html>

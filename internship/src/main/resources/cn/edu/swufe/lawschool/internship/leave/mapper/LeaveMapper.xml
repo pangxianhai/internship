@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.leave.mapper.LeaveMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.leave.model.LeaveRecord">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="begin_day" property="beginDay" jdbcType="BIGINT"/>
+        <result column="begin_time_interval" property="beginTimeInterval"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="end_day" property="endDay" jdbcType="BIGINT"/>
+        <result column="end_time_interval" property="endTimeInterval"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="leave_type" property="leaveType"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="reason" property="reason" jdbcType="VARCHAR"/>
+        <result column="status" property="leaveStatus"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,begin_day,begin_time_interval,end_day,end_time_interval,leave_type,reason,status,created_by,created_time,updated_by,updated_time
+    </sql>
+    <select id="selectForStudent" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.leave.model.LeaveRecord">
+        select lr.id,
+        lr.user_id,lr.begin_day,lr.begin_time_interval,lr.end_day,lr.end_time_interval,lr.leave_type,lr.reason,
+        lr.status,lr.created_by,lr.created_time,lr.updated_by,lr.updated_time
+        from leave_record lr left join student s on (s.user_id = lr.user_id)
+        <where>
+            <if test="id != null">
+                and lr.id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="userId != null">
+                and lr.user_id = #{userId,jdbcType=BIGINT}
+            </if>
+            <if test="leaveType != null">
+                and lr.leave_type = #{leaveType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+            <if test="leaveStatus != null">
+                and lr.status = #{leaveStatus,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+            <if test="student != null">
+                <if test="student.id != null">
+                    and s.id = #{student.id,jdbcType=BIGINT}
+                </if>
+                <if test="student.name != null">
+                    and s.name = #{student.name,jdbcType=VARCHAR}
+                </if>
+                <if test="student.studentNumber != null">
+                    and s.student_number = #{student.studentNumber,jdbcType=VARCHAR}
+                </if>
+                <if test="student.tutorId != null">
+                    and s.tutor_id = #{student.tutorId,jdbcType=BIGINT}
+                </if>
+                <if test="student.teacherId != null">
+                    and s.teacher_id = #{student.teacherId,jdbcType=BIGINT}
+                </if>
+                <if test="student.companyId != null">
+                    and s.company_id = #{student.companyId,jdbcType=BIGINT}
+                </if>
+                <if test="student.universityId != null">
+                    and s.university_id = #{student.universityId,jdbcType=BIGINT}
+                </if>
+                <if test="student.collegeId != null">
+                    and s.college_id = #{student.collegeId,jdbcType=BIGINT}
+                </if>
+                <if test="student.departmentId != null">
+                    and s.department_id = #{student.departmentId,jdbcType=BIGINT}
+                </if>
+                <if test="student.specialityId != null">
+                    and s.speciality_id = #{student.specialityId,jdbcType=BIGINT}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.leave.model.LeaveRecord">
+        insert into leave_record(<include refid="Base_Column_List"/>)
+        values(
+        #{userId,jdbcType=BIGINT},
+        #{beginDay,jdbcType=BIGINT},
+        #{beginTimeInterval,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{endDay,jdbcType=BIGINT},
+        #{endTimeInterval,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{leaveType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{reason,jdbcType=VARCHAR},
+        #{leaveStatus,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.leave.model.LeaveRecord">
+        update leave_record
+        <set>
+            <if test="leaveStatus != null">
+                status = #{leaveStatus,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from leave_record where id =  #{leaveRecordId,jdbcType=BIGINT}
+    </delete>
+</mapper>
+

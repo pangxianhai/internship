@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.university.mapper.UniversityDepartmentMapper">
+    <resultMap id="BaseResultMap"
+               type="cn.edu.swufe.lawschool.internship.university.model.UniversityDepartment">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="parent_id" property="parentId" jdbcType="BIGINT"/>
+        <result column="department_name" property="departmentName" jdbcType="VARCHAR"/>
+        <result column="department_type" property="departmentType"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="status" property="status"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,parent_id,department_name,department_type,status,created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.university.model.UniversityDepartment">
+        select
+        <include refid="Base_Column_List"/>
+        from university_department
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="parentId != null">
+                and parent_id = #{parentId,jdbcType=BIGINT}
+            </if>
+            <if test="departmentName != null">
+                and department_name like concat('%',#{departmentName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="departmentType != null">
+                and department_type =
+                #{departmentType, typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.university.model.UniversityDepartment">
+        insert into university_department(<include refid="Base_Column_List"/>)
+        values(
+        #{id,jdbcType=BIGINT},
+        #{parentId,jdbcType=BIGINT},
+        #{departmentName,jdbcType=VARCHAR},
+        #{departmentType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        NULL,
+        NULL
+        )
+    </insert>
+
+    <update id="update"
+            parameterType="cn.edu.swufe.lawschool.internship.university.model.UniversityDepartment">
+        update university_department
+        <set>
+            <if test="departmentName != null">
+                department_name = #{departmentName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            updated_by = #{updatedBy,jdbcType=VARCHAR},
+            updated_time = #{updatedTime,jdbcType=BIGINT}
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+</mapper>

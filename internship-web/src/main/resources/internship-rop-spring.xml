@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:rop="http://www.xavierrop.com/schema/rop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.xavierrop.com/schema/rop http://www.xavierrop.com/schema/rop/rop-1.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <import resource="classpath*:internship-spring.xml"/>
+
+    <rop:annotation-driven id="router"
+                           sign-enable="true"
+                           timeout="5000"
+                           default-format-type="json"
+                           charset-name="UTF-8"
+                           default-need-session="no"
+                           default-secret-type="md5"
+                           session-manager="internshipSessionManage"
+                           appSecret-manager="internshipAppSecretManager"
+    />
+    <!--session 管理器-->
+    <bean id="internshipSessionManage" class="cn.edu.swufe.lawschool.internship.server.session.InternshipSessionManage"/>
+
+    <!--密钥 管理器-->
+    <bean id="internshipAppSecretManager" class="cn.edu.swufe.lawschool.internship.server.InternshipAppSecretManager"/>
+
+    <!--异常拦截器-->
+    <bean class="cn.edu.swufe.lawschool.internship.server.interceptor.InternshipRopExceptionResolver"/>
+
+    <!--拦截器-->
+    <bean class="cn.edu.swufe.lawschool.internship.server.interceptor.InternshipRopInterceptor"/>
+
+</beans>

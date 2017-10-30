@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="${internshipNotes.studentName}${internshipNotes.beginDay?number_to_datetime?string('yyyy-MM-dd')}实习日记"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/journal/diaryJournal/diaryJournalDetail.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/journal/diaryJournal/diaryJournalDetail.css" rel="stylesheet"
+          type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="diary_journal_panel">
+    <div class="diary_journal_tips">实习内容：</div>
+    <div class="diary_journal_content umeditor">${internshipNotes.notesContent}</div>
+    <div class="diary_journal_tips">实习心得：</div>
+    <div class="diary_journal_content umeditor">${internshipNotes.notesReview}</div>
+    <div class="diary_journal_tips">带队老师考评意见：</div>
+    <div class="diary_journal_content umeditor">${internshipNotes.teacherRemark!'还未考评'}</div>
+    <#if logInfo.student && !internshipNotes.teacherRemark??>
+        <div class="update-diary-journal-btn">
+            <a href="/webApp/student/diaryJournal/update/${internshipNotes.desId}.htm?returnUrl=${locationURL}"
+               class="button">更新</a>
+        </div>
+    </#if>
+    <#if logInfo.teacher && !internshipNotes.teacherRemark??>
+        <div class="update-diary-journal-btn">
+            <a href="/webApp/student/diaryJournal/review/${internshipNotes.desId}.htm?returnUrl=${locationURL}"
+               class="button">考评</a>
+        </div>
+    </#if>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

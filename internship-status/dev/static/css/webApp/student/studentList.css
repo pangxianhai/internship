@@ -1,0 +1,59 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.student_list_panel {
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.student_list_panel .student_list .student_node .operate {
+    float: right;
+    overflow: hidden;
+    color: #fff;
+    height: 5rem;
+    text-align: center;
+    font-size: 12px;
+    visibility: hidden;
+}
+
+.student_list_panel .student_list .student_node .operate_list {
+    overflow: hidden;
+    height: 100%;
+}
+
+.student_list_panel .student_list .student_node .operate .operate_list li {
+    float: right;
+    width: 4rem;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.student_list_panel .operate li.delete {
+    background-color: #ff0000;
+    width: 4rem;
+    line-height: 5rem;
+    font-size: 14px;
+}
+
+.student_list_panel .operate li.teacher {
+    background-color: #3f55a0;
+
+}
+
+.student_list_panel .operate li.company {
+    background-color: #865DA0;
+}
+
+.student_list_panel .operate li.tutor {
+    background-color: #a06577;
+}
+
+.student_list_panel .operate .assign {
+    width: 2.3rem;
+    line-height: 1rem;
+    margin: auto;
+    padding-top: 1.5rem;
+}

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+.header {
+
+}
+
+.header .title {
+    margin-left: 120px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.header .title li {
+    float: left;
+    padding-right: 20px;
+}
+
+.header .title li #bulletin_head_tips{
+    color: #c90066;
+    position:relative;
+}
+
+.header .title li a {
+    color: #3f55a0;
+}
+
+.header .header_main {
+    background: url("../images/head_bg.jpg") repeat-x;
+    height: 107px;
+}
+
+.header .header_main .header_top {
+    background: url("../images/head_top_bg.jpg") repeat-x;
+}
+
+.header .header_main .header_top img {
+    float: left;
+    margin-top: 18px;
+}
+
+.header .header_main .header_top .sys_name {
+    float: left;
+    line-height: 85px;
+    color: #006699;
+    font-size: 28px;
+    margin-left: 263px;
+    margin-top: 6px;
+}

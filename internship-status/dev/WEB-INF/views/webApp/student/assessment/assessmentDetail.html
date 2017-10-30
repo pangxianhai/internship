@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="实习考评表"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/assessment/assessmentDetail.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/student/assessment/assessmentDetail.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<div class="assessment_detail_panel">
+    <#include "/webApp/header.html" />
+    <div class="assessment_content">
+        <div class="tutor_remark">
+            <div class="tutor_remark_title">实习单位指导教师考评意见：</div>
+            <div class="tutor_remark_content umeditor">${assessment.tutorRemark}</div>
+            <div class="tutor_sign">建议实习成绩：${assessment.tutorScoreStr}分</div>
+            <div class="tutor_sign">实习单位教师签名：${assessment.tutorName}</div>
+            <div class="tutor_remark_time">
+                ${assessment.tutorRemarkTime?number_to_datetime?string("yyyy年MM月dd日")}
+            </div>
+        </div>
+        <div class="company_remark">
+            <div class="company_remark_title">实习单位意见：</div>
+            <div class="company_remark_content umeditor">${assessment.companyRemark}</div>
+            <div class="company_sign">实习单位（盖章）：${assessment.companyName}</div>
+            <div class="company_remark_time">
+                ${assessment.companyRemarkTime?number_to_datetime?string("yyyy年MM月dd日")}
+            </div>
+        </div>
+    </div>
+    <div class="teacher_sign">学校指导教师签名：${assessment.teacherName!''}</div>
+    <#if canReviewAssessment && logInfo.tutor && !assessment.companyReviewerId??>
+        <div class="assessment_submit">
+            <a href="/webApp/student/assessment/company_review/${assessment.desId}.htm" class="button">实习单位点评</a>
+        </div>
+    </#if>
+    <#if canReviewAssessment && logInfo.teacher  && !assessment.teacherConfirmUserId??>
+        <div class="assessment_submit">
+            <a href="javascript:void(0)" id="teacherConfirmBtn" class="button">带队老师确认</a>
+        </div>
+    </#if>
+</div>
+<input id="assessmentDesId" type="hidden" value="${assessment.desId}"/>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

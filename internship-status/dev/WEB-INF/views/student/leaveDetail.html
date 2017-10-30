@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="登录-实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="系统登录"/>
+    <title>学生请假-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/student/leaveDetail.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/student/leaveDetail.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} <a href="/student/leave/list.htm">请假信息</a> &gt; 请假详情</span>
+            <hr/>
+        </div>
+        <div class="examine">
+            <a id="examine_btn" class="btn45" href="javascript:void(0)">审核</a>
+        </div>
+        <div class="leave-info">
+            <ul class="leave-title">
+                <li>请假类型：</li>
+                <li>请假时间：</li>
+                <li>请假原因：</li>
+                <li>状态：</li>
+            </ul>
+            <ul class="leave-content">
+                <li>${leaveRecord.leaveType.desc}</li>
+                <li>
+                    ${leaveRecord.beginDay?number_to_datetime?string("yyyy-MM-dd")}${leaveRecord.beginTimeInterval.desc}
+                    &nbsp;到&nbsp;
+                    ${leaveRecord.endDay?number_to_datetime?string("yyyy-MM-dd")}${leaveRecord.endTimeInterval.desc}
+                </li>
+                <li>${leaveRecord.reason}</li>
+                <li>${leaveRecord.leaveStatus.desc}</li>
+            </ul>
+        </div>
+        <div class="leave-flow">
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+<div id="examine_dialog" style="display: none">
+    <div class="examine_panel">
+        <span class="">审核意见：</span>
+        <select id="studentLeaveSelect">
+            <#list examineStatus as e>
+                <option value="${e.code}">${e.desc}</option>
+            </#list>
+        </select>
+    </div>
+</div>
+<input id="user_id" value="${logInfo.id}" type="hidden"/>
+<input id="leave_id" value="${leaveRecord.id}" type="hidden"/>
+<input id="menu_id" value="leave" type="hidden"/>
+</body>
+</html>

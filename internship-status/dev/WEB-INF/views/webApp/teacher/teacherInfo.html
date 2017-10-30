@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="我的信息"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/teacher/teacherInfo.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/user/userInfo.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/teacher/teacherInfo.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="teacher_info_panel">
+    <ul id="teacherInfoList" class="user_list">
+        <li class="_node">
+            <p class="_tips">用户名</p>
+            <p class="_content">${teacher.userInfo.userName}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">姓名</p>
+            <p class="_content">${teacher.name}</p>
+        </li>
+        <li id="tutorSexNode" sexCode="${teacher.userInfo.sex.code}" class="_node">
+            <p class="_tips">性别</p>
+            <p class="_content">${teacher.userInfo.sex.desc}</p>
+            <i class="_icon">&gt;</i>
+        </li>
+        <li id="tutorPhoneNode" class="_node">
+            <p class="_tips">联系方式</p>
+            <p class="_content">${teacher.userInfo.phone}</p>
+            <i class="_icon">&gt;</i>
+        </li>
+        <li class="_node">
+            <p class="_tips">学校</p>
+            <p class="_content">${teacher.university.departmentName}</p>
+            <i class="_icon">&gt;</i>
+        </li>
+        <li class="_node">
+            <p class="_tips">学院</p>
+            <p class="_content">${teacher.college.departmentName}</p>
+            <i class="_icon">&gt;</i>
+        </li>
+        <#if teacher.department?? >
+            <li class="_node">
+                <p class="_tips">系</p>
+                <p class="_content">${teacher.department.departmentName}</p>
+                <i class="_icon">&gt;</i>
+            </li>
+        </#if>
+        <#if teacher.speciality?? >
+            <li class="_node">
+                <p class="_tips">专业</p>
+                <p class="_content">${teacher.speciality.departmentName}</p>
+                <i class="_icon">&gt;</i>
+            </li>
+        </#if>
+        <li class="_node">
+            <p class="_tips">职称</p>
+            <p class="_content">${teacher.rank}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">当前实习人数</p>
+            <p class="_content">${teacher.studentNumber}</p>
+        </li>
+        <li class="_node ">
+            <p class="_tips">角色</p>
+            <p class="_content">${teacher.teacherType.desc}</p>
+        </li>
+        <li class="_node _last">
+            <a href="/webApp/bulletin/myBulletin.htm?returnUrl=${locationURL}">
+                <p class="_tips">我的公告</p>
+                <p class="_content">查看</p>
+                <i class="_icon">&gt;</i>
+            </a>
+        </li>
+    </ul>
+    <ul class="logout_panel user_list">
+        <li class="logout_node _node _last">
+            <a href="/login/logout.htm">退出登录</a>
+        </li>
+    </ul>
+</div>
+<#include "/webApp/footer.html" />
+<input id="show_header_left" type="hidden" value="false"/>
+<input id="footerMenuId" type="hidden" value="me"/>
+</body>
+</html>

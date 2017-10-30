@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.attend.mapper.AttendMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.attend.model.AttendRecord">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="attend_day" property="attendDay" jdbcType="BIGINT"/>
+        <result column="time_interval" property="timeInterval"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="status" property="attendStatus"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id,attend_day,time_interval,status,created_by,created_time,updated_by,updated_time
+    </sql>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.attend.model.AttendRecord">
+        insert into attend_record(<include refid="Base_Column_List"/>)
+        values(
+        #{userId,jdbcType=BIGINT},
+        #{attendDay,jdbcType=BIGINT},
+        #{timeInterval,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{attendStatus,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.attend.model.AttendRecord">
+        update attend_record
+        <set>
+            <if test="attendStatus != null">
+                status = #{attendStatus,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            <if test="updatedBy != null">
+                updated_by = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=BIGINT},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+    <select id="selectForStudent" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.attend.model.AttendRecordParam">
+        select
+        ar.id,ar.user_id,ar.attend_day,ar.time_interval,ar.status,ar.created_by,ar.created_time,ar.updated_by,
+        ar.updated_time
+        from attend_record ar left join student s on (s.user_id = ar.user_id)
+        <where>
+            <if test="id != null">
+                and ar.id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="userId != null">
+                and ar.user_id = #{userId,jdbcType=BIGINT}
+            </if>
+            <if test="attendDay != null">
+                and ar.attend_day = #{attendDay,jdbcType=BIGINT}
+            </if>
+            <if test="attendBeginDay != null">
+                and ar.attend_day &gt;= #{attendBeginDay,jdbcType=BIGINT}
+            </if>
+            <if test="attendEndDay != null">
+                and ar.attend_day &lt;= #{attendEndDay,jdbcType=BIGINT}
+            </if>
+            <if test="timeInterval != null">
+                and ar.time_interval =
+                #{timeInterval,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+            <if test="attendStatus != null">
+                and ar.status = #{attendStatus,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+            <if test="student != null">
+                <if test="student.id != null">
+                    and s.id = #{student.id,jdbcType=BIGINT}
+                </if>
+                <if test="student.name != null and student.studentNumber == null">
+                    and s.name like concat('%',#{student.name,jdbcType=VARCHAR},'%')
+                </if>
+                <if test="student.studentNumber != null">
+                    and s.student_number = #{student.studentNumber,jdbcType=VARCHAR}
+                </if>
+                <if test="student.companyId != null">
+                    and s.company_id = #{student.companyId,jdbcType=BIGINT}
+                </if>
+                <if test="student.tutorId != null">
+                    and s.tutor_id = #{student.tutorId,jdbcType=BIGINT}
+                </if>
+                <if test="student.universityId">
+                    and s.university_id = #{student.universityId,jdbcType=BIGINT}
+                </if>
+                <if test="student.collegeId">
+                    and s.college_id = #{student.collegeId,jdbcType=BIGINT}
+                </if>
+                <if test="student.departmentId">
+                    and s.department_id = #{student.departmentId,jdbcType=BIGINT}
+                </if>
+                <if test="student.specialityId">
+                    and s.speciality_id = #{student.specialityId,jdbcType=BIGINT}
+                </if>
+                <if test="student.teacherId != null">
+                    and s.teacher_id = #{student.teacherId,jdbcType=BIGINT}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from attend_record where id =  #{attendId,jdbcType=BIGINT}
+    </delete>
+</mapper>

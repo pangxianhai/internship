@@ -1,0 +1,29 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+#mainDiv {
+    overflow: hidden;
+}
+
+.student_info_panel {
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.student_info_panel .assign_student_panel {
+    overflow: hidden;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+}
+
+.student_info_panel .assign_student_panel .button {
+    width: 60%;
+    margin: auto;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 8px;
+    font-size: 15px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="添加学校部门"/>
+    <#include "/meta.html" />
+    <!--coolie-->
+    <link href="/static/css/university/universityAdd.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/university/universityAdd.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} <a href="/university/list.htm">学校部门列表</a> &gt; 添加部门</span>
+            <hr/>
+        </div>
+        <div class="add_university_panel">
+            <ul class="tips">
+                <li>类型：</li>
+                <li>名称：</li>
+                <li class="parent_tips">父部门：</li>
+            </ul>
+            <ul class="value">
+                <form id="addUniversityForm" method="post">
+                    <li>
+                        <select id="departmentType" name="departmentTypeCode">
+                            <#list departmentTypes as type>
+                                <option value="${type.code}">${type.desc}</option>
+                            </#list>
+                        </select>
+                    </li>
+                    <li>
+                        <input id="departmentName" name="departmentName" type="text" placeholder="名称(必填)"/>
+                    </li>
+                    <li class="parent_select">
+                        <select id="university" name="universityDesId">
+                        </select>
+                        <select id="college" name="collegeDesId">
+                        </select>
+                        <select id="department" name="departmentDesId">
+                        </select>
+                    </li>
+                </form>
+            </ul>
+            <div class="add_btn_panel">
+                <a class="btn243 submit_btn" id="addUniversityBtn" href="javascript:void(0)">添加</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="departmentTypeCode" value="${departmentTypeCode}" type="hidden"/>
+<input id="universityDesId" value="${universityDesId}" type="hidden"/>
+<input id="collegeDesId" value="${collegeDesId}" type="hidden"/>
+<input id="departmentDesId" value="${departmentDesId}" type="hidden"/>
+<input id="menu_id" value="university" type="hidden"/>
+<#include "/footer.html" />
+</body>
+</html>

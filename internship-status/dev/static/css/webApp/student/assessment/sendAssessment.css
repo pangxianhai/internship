@@ -1,0 +1,33 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.send_assessment_panel {
+    overflow: hidden;
+}
+
+.send_assessment_panel .assessment_tips {
+    padding: 0.5rem 0 0.5rem 0.3rem;
+}
+
+.send_assessment_panel .assessment_score {
+    padding-top: 1rem;
+    height: 2rem;
+    padding-left: 0.3rem;
+}
+
+.send_assessment_panel .assessment_submit {
+    overflow: hidden;
+    margin: 1rem 0 1rem 0;
+}
+
+.send_assessment_panel .assessment_submit .button {
+    width: 60%;
+    margin: auto;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 8px;
+    font-size: 15px;
+    letter-spacing: 8px;
+}

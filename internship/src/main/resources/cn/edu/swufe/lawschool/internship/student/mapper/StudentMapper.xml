@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.student.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.student.model.Student">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="student_number" property="studentNumber" jdbcType="VARCHAR"/>
+        <result column="grade" property="grade" jdbcType="VARCHAR"/>
+        <result column="company_id" property="companyId" jdbcType="BIGINT"/>
+        <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+        <result column="tutor_id" property="tutorId" jdbcType="BIGINT"/>
+        <result column="tutor_name" property="tutorName" jdbcType="VARCHAR"/>
+        <result column="teacher_id" property="teacherId" jdbcType="BIGINT"/>
+        <result column="teacher_name" property="teacherName" jdbcType="VARCHAR"/>
+        <result column="university_id" property="universityId" jdbcType="BIGINT"/>
+        <result column="college_id" property="collegeId" jdbcType="BIGINT"/>
+        <result column="department_id" property="departmentId" jdbcType="BIGINT"/>
+        <result column="speciality_id" property="specialityId" jdbcType="BIGINT"/>
+        <result column="academician_type" property="academicianType"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="expect_company" property="expectCompany" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="status" property="status"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+        <association property="userInfo" column="user_id"
+                     javaType="cn.edu.swufe.lawschool.internship.user.model.UserInfo">
+            <id column="user_id" property="id" jdbcType="BIGINT"/>
+            <result column="u_user_name" property="userName" jdbcType="VARCHAR"/>
+            <result column="u_password" property="password" jdbcType="VARCHAR"/>
+            <result column="u_name" property="name" jdbcType="VARCHAR"/>
+            <result column="u_sex" property="sex"
+                    typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+            <result column="u_phone" property="phone" jdbcType="VARCHAR"/>
+            <result column="u_user_type" property="userType"
+                    typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+            <result column="u_status" property="status"
+                    typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        </association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        name,student_number,grade,tutor_id,tutor_name,teacher_id,teacher_name,company_id,company_name,
+        university_id,college_id,department_id,speciality_id,academician_type,
+        user_id,expect_company,remark,status,created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.student.model.StudentParam">
+        select
+        s.id,s.name,s.student_number,s.grade,s.tutor_id,s.tutor_name,s.teacher_id,s.teacher_name,s.company_id,s.company_name,s.user_id,s.expect_company,s.remark,s.status,s.created_by,
+        s.created_time,s.updated_by,s.updated_time,s.university_id,s.college_id,s.department_id,s.speciality_id,s.academician_type,
+        u.id as u_id,u.user_name as u_user_name,u.password as u_password,u.name as u_name,
+        u.sex as u_sex,u.phone as u_phone,u.user_type as u_user_type,u.status as u_status
+        from student s left join user_info u on (s.user_id = u.id)
+        <where>
+            <if test="id != null">
+                and s.id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="name != null">
+                and s.name like concat('%',#{name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="studentNumber != null">
+                and s.student_number = #{studentNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="grade != null">
+                and s.grade = #{grade,jdbcType=VARCHAR}
+            </if>
+            <if test="tutorId != null">
+                and s.tutor_id = #{tutorId,jdbcType=BIGINT}
+            </if>
+            <if test="tutorName != null">
+                and s.tutor_name like concat('%',#{tutorName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="teacherId != null">
+                and s.teacher_id = #{teacherId,jdbcType=BIGINT}
+            </if>
+            <if test="teacherName != null">
+                and s.teacher_name like concat('%',#{teacherName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="companyId != null">
+                and s.company_id = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="companyName != null">
+                and s.company_name like concat('%',#{companyName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="userId != null">
+                and s.user_id = #{userId,jdbcType=BIGINT}
+            </if>
+            <if test="universityId != null">
+                and s.university_id = #{universityId,jdbcType=BIGINT}
+            </if>
+            <if test="collegeId != null">
+                and s.college_id = #{collegeId,jdbcType=BIGINT}
+            </if>
+            <if test="departmentId != null">
+                and s.department_id = #{departmentId,jdbcType=BIGINT}
+            </if>
+            <if test="specialityId != null">
+                and s.speciality_id = #{specialityId,jdbcType=BIGINT}
+            </if>
+            <if test="status != null">
+                and s.status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+            <if test="registerBeginTime != null">
+                and s.created_time &gt;= #{registerBeginTime,jdbcType=BIGINT}
+            </if>
+            <if test="registerEndTime != null">
+                and s.created_time &lt;= #{registerEndTime,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.student.model.Student">
+        insert into student(<include refid="Base_Column_List"/>)
+        values(
+        #{name,jdbcType=VARCHAR},
+        #{studentNumber,jdbcType=VARCHAR},
+        #{grade,jdbcType=VARCHAR},
+        #{tutorId,jdbcType=BIGINT},
+        #{tutorName,jdbcType=VARCHAR},
+        #{teacherId,jdbcType=BIGINT},
+        #{teacherName,jdbcType=VARCHAR},
+        #{companyId,jdbcType=BIGINT},
+        #{companyName,jdbcType=VARCHAR},
+        #{universityId,jdbcType=BIGINT},
+        #{collegeId,jdbcType=BIGINT},
+        #{departmentId,jdbcType=BIGINT},
+        #{specialityId,jdbcType=BIGINT},
+        #{academicianType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{userId,jdbcType=BIGINT},
+        #{expectCompany,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.student.model.StudentParam">
+        update student
+        <set>
+            <if test="grade != null">
+                grade = #{grade,jdbcType=VARCHAR},
+            </if>
+            <if test="tutorId != null">
+                tutor_id = #{tutorId,jdbcType=BIGINT},
+            </if>
+            <if test="tutorName != null">
+                tutor_name = #{tutorName,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherId != null">
+                teacher_id = #{teacherId,jdbcType=BIGINT},
+            </if>
+            <if test="teacherName != null">
+                teacher_name = #{teacherName,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUniversity">
+                university_id = #{universityId,jdbcType=BIGINT},
+                college_id = #{collegeId,jdbcType=BIGINT},
+                department_id = #{departmentId,jdbcType=BIGINT},
+                speciality_id = #{specialityId,jdbcType=BIGINT},
+            </if>
+            <if test="academicianType != null">
+                academician_type =
+                #{academicianType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            <if test="expectCompany != null">
+                expect_company = #{expectCompany,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            <if test="updatedBy != null">
+                updated_by = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=BIGINT},
+            </if>
+            <if test="removeTutor">
+                tutor_id = NULL,
+                tutor_name = NULL,
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from student where id =  #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

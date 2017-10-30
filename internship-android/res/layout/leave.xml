@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#EEE">
+    <include layout="@layout/header"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginTop="20dp"
+                  android:background="#FFF">
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="20dp"
+                  android:text="申请请假："
+                  android:textColor="@color/color_main"
+                  android:textSize="18dp"
+                  android:textStyle="bold"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_marginLeft="20dp">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="20dp">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="30dp"
+                          android:text="开始时间:"
+                          android:textColor="#000"/>
+                <Button
+                        android:id="@+id/leave_begin_time_button"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/button_angle_bg"
+                        android:textColor="#000"/>
+                <Spinner
+                        android:id="@+id/leave_begin_time_interval_spinner"
+                        android:layout_width="120dp"
+                        android:background="#EBEBEB"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="10dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="20dp">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="30dp"
+                          android:text="结束时间:"
+                          android:textColor="#000"/>
+                <Button
+                        android:id="@+id/leave_end_time_button"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/button_angle_bg"
+                        android:textColor="#000"/>
+                <Spinner
+                        android:id="@+id/leave_end_time_interval_spinner"
+                        android:layout_width="120dp"
+                        android:background="#EBEBEB"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="10dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="20dp">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="30dp"
+                          android:text="请假类型:"
+                          android:textColor="#000"/>
+                <Spinner
+                        android:id="@+id/leave_type_spinner"
+                        android:layout_width="120dp"
+                        android:background="#EBEBEB"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="10dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="20dp">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="30dp"
+                          android:text="请假原因:"
+                          android:textColor="#000"/>
+                <EditText
+                        android:id="@+id/leave_reason_text"
+                        android:layout_width="240dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="5dp"
+                        android:hint="请输入请假理由"
+                        android:inputType="text"
+                        android:background="@drawable/radius"
+                        android:textSize="16dp"
+                        android:textColor="#000"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="30dp"
+                      android:layout_marginBottom="30dp"
+                      android:orientation="vertical"
+                      android:gravity="center">
+            <Button
+                    android:id="@+id/leave_submit_button"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:text="提  交"
+                    android:background="@drawable/button_radius"
+                    android:gravity="center"
+                    android:textColor="#FFF"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

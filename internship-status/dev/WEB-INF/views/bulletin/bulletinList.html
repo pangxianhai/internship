@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="我的公告"/>
+    <#include "/meta.html" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/bulletin/bulletin_list.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/bulletin/bulletin_list.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} ${title}</span>
+            <hr/>
+        </div>
+        <div class="bulletin_info">
+            <div class="search">
+                <form id="search_form">
+                    <table>
+                        <tr>
+                            <td>标题:</td>
+                            <td><input name="title" type="text" value="${bulletinInfo.title}"/></td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="search_btn">
+                    <a id="search_action" class="btn45" href="javascript:void(0)">搜索</a>
+                    <a id="add_bulletin_action" class="btn45 add-bulletin" href="/bulletin/add.htm">添加公告</a>
+                </div>
+            </div>
+            <table class="content_table">
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="u_data"></tbody>
+            </table>
+            <div class="page_list"></div>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+<input id="menu_id" value="myBulletin" type="hidden"/>
+</body>
+</html>

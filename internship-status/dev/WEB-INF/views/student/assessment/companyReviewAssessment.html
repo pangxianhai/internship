@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <title>实习单位点评学生实习评价表-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/js/lib/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/student/assessment/company_review_assessment.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/student/assessment/company_review_assessment.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">
+                ${menuTitle}
+                <a href="/student/internship/info.htm">学生实习信息</a> &gt;
+                点评${assessment.studentName}的实习评价表
+            </span>
+            <hr/>
+        </div>
+        <div class="assessment-info">
+            <form id="assessment_form">
+                <input id="assessment_des_id" name="desId" value="${assessment.desId}" style="display: none"/>
+                <div class="assessment-tips">实习单位意见：</div>
+                <div class="assessment umeditor" id="company_remark" name="companyRemark"></div>
+                <div class="assessment-info-btn">
+                    <a id="assessment_review_btn" href="javascript:void(0)" class="btn243">提交</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+<input id="menu_id" value="inter-info" style="display: none"/>
+</body>
+</html>

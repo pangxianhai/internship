@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="学校列表"/>
+    <#include "/meta.html" />
+    <!--coolie-->
+    <link href="/static/css/university/universityList.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/university/universityList.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} 学校列表</span>
+            <hr/>
+        </div>
+        <div class="university_info">
+            <div class="search">
+                <form id="search_form">
+                    <table>
+                        <tr>
+                            <td>名称</td>
+                            <td><input name="departmentName" type="text" value=""/></td>
+                        </tr>
+                    </table>
+                    <div class="search_btn">
+                        <a id="searchBtn" class="btn45" href="javascript:void(0)">搜索</a>
+                        <a id="addBtn" class="btn45" href="/university/add.htm">添加</a>
+                    </div>
+                </form>
+            </div>
+            <table class="content_table">
+                <thead>
+                <tr>
+                    <th class="name">名称</th>
+                    <th class="type">部门类型</th>
+                    <th class="path">部门路径</th>
+                    <th class="operate">操作</th>
+                </tr>
+                </thead>
+                <tbody id="u_data" class="university_list"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="updatePanel" style="display: none">
+    <div class="update_panel">
+        <form id="updateForm">
+            名称:<input type="text" name="departmentName"/>
+        </form>
+        <div class="submit_btn">
+            <a href="javascript:void(0)" class="btn45" id="updateSubmit">提交</a>
+        </div>
+    </div>
+</div>
+<input id="menu_id" value="university" type="hidden"/>
+<#include "/footer.html" />
+</body>
+</html>

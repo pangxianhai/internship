@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="系统提示"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/header.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/404.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="_404panel">
+    <i></i>
+    <span>
+        <#if error_message??>
+            ${error_message!''}
+            <#else>
+                哎呀！一不小心出了个错误
+        </#if>
+    </span>
+    <div class="go_home">
+        <a href="/webApp">去首页</a>
+    </div>
+</div>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="show_header_right" type="hidden" value="true"/>
+</body>
+</html>

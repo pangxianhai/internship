@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.n-error {
+    overflow: hidden;
+    color: #FF0000;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.n-error .n-icon {
+    background: url('/static/images/validator/validator_default.png') no-repeat;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    float: left;
+}
+
+.n-error .n-msg{
+    line-height: 16px;
+}
+
+.n-ok {
+    overflow: hidden;
+    background: url('/static/images/validator/validator_default.png') no-repeat;
+    background-position-x: -16px;
+    color: #390;
+    width: 18px;
+    height: 16px;
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 12px;
+}

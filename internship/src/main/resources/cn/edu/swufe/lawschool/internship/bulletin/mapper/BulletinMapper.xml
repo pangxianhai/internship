@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.bulletin.mapper.BulletinMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.bulletin.model.BulletinInfo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="LONGVARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="status" property="status" typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        title,content,user_id,status,created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.bulletin.model.BulletinInfo">
+        select id ,
+        <include refid="Base_Column_List"/>
+        from bulletin
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId,jdbcType=BIGINT}
+            </if>
+            <if test="title != null">
+                and title like concat('%',#{title,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="status != null">
+                and status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.bulletin.model.BulletinInfo">
+        insert into bulletin(<include refid="Base_Column_List"/>)
+        values(
+        #{title,jdbcType=VARCHAR},
+        #{content,jdbcType=LONGVARCHAR},
+        #{userId,jdbcType=BIGINT},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.bulletin.model.BulletinInfo">
+        update bulletin
+        <set>
+            <if test="status != null">
+                status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            <if test="updatedBy != null">
+                updated_by = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=BIGINT},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from bulletin where id =  #{bulletinId,jdbcType=BIGINT}
+    </delete>
+</mapper>

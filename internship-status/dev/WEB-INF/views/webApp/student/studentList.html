@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="学生信息"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/studentList.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/user/userList.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/student/studentList.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="student_list_panel">
+    <ul class="user_list" id="studentList">
+    </ul>
+</div>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="canChangeCompany" value="${canChangeCompany}" type="hidden"/>
+<input id="canChangeTutor" value="${canChangeTutor}" type="hidden"/>
+<input id="canChangeTeacher" value="${canChangeTeacher}" type="hidden"/>
+<input id="canDeleteStudent" value="${canDeleteStudent}" type="hidden"/>
+</body>
+</html>

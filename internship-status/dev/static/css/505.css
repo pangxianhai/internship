@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.error_message {
+    height: 253px;
+    font-size: 20px;
+    color: #c90066;
+    padding-top: 150px;
+    text-align: center;
+}

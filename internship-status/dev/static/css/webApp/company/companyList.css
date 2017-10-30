@@ -1,0 +1,37 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.company_list_panel {
+    overflow: hidden;
+}
+
+.company_list_panel .user_list .user_node {
+    height: 3.8rem;
+}
+
+.company_list_panel .user_list .user_node .operate {
+    height: 3.8rem;
+}
+
+.company_list_panel .user_list .user_node .operate .assign {
+    padding-top: 1rem;
+}
+
+.company_list_panel .user_list .user_node .user_show {
+    height: 3.3rem;
+}
+
+.company_list_panel .user_list .user_node .user_show .user_info .company_name {
+    width: 70%;
+    text-align: left;
+}
+
+.company_list_panel .user_list .user_node .user_show .user_info .company_name span {
+    padding-left: 10px;
+}
+
+.company_list_panel .user_list .user_node .user_show .user_info .student_number {
+    width: 30%;
+}

@@ -1,0 +1,96 @@
+<!--coolie-->
+<link href="/static/css/menu.css" rel="stylesheet" type="text/css"/>
+<!--/coolie-->
+<div class="menu">
+    <div class="info">
+        <#if !logInfo??>
+            <span class="title"></span>
+            <ul class="menu_list">
+                <li>
+                    <a data="application_internship" class="no_current" href="/student/application-inter.htm">申请实习</a>
+                </li>
+                <li><a data="company" class="no_current" href="/company/list.htm">实习单位</a></li>
+                <li><a data="forget_password" class="no_current" href="/user/forget_password.htm">忘记密码</a>
+                </li>
+            </ul>
+            <#assign menuTitle="" />
+        </#if>
+        <#if logInfo?? && logInfo.sysadmin>
+            <span class="title">系统管理员</span>
+            <ul class="menu_list">
+                <li><a data="user" class="no_current" href="/user/list.htm">用户管理</a></li>
+                <li><a data="company" class="no_current" href="/company/list.htm">实习单位管理</a></li>
+                <li><a data="tutor" class="no_current" href="/tutor/list.htm">单位导师管理</a></li>
+                <li><a data="university" class="no_current" href="/university/list.htm">学校组织管理</a></li>
+                <li><a data="teacher" class="no_current" href="/teacher/list.htm">带队老师管理</a></li>
+                <li><a data="student" class="no_current" href="/student/list.htm">学生管理</a></li>
+                <li><a data="myBulletin" class="no_current" href="/bulletin/myBulletin.htm">我的公告</a></li>
+                <li><a data="appSecret" class="no_current" href="/app_secret/list.htm">APP密钥管理</a></li>
+                <li><a data="myInfo" class="no_current" href="/sysadmin/my_info.htm">我的信息</a></li>
+                <li><a data="password" class="no_current" href="/user/change_password.htm">修改密码</a></li>
+            </ul>
+            <#assign menuTitle="系统管理员 &gt;" />
+        </#if>
+        <#if logInfo?? && logInfo.teacher>
+            <span class="title">带队老师</span>
+            <ul class="menu_list">
+                <li><a data="examine" class="no_current" href="/examine/list.htm">待审核消息</a></li>
+                <#if isLeader?? && isLeader>
+                    <li><a data="student" class="no_current" href="/student/list.htm">学生基础信息</a></li>
+                    <li><a data="teacher" class="no_current" href="/teacher/list.htm">带队老师</a></li>
+                    <li><a data="company" class="no_current" href="/company/list.htm">实习单位</a></li>
+                </#if>
+                <li><a data="leave" class="no_current" href="/student/leave/list.htm">学生请假</a></li>
+                <li><a data="diary" class="no_current" href="/student/diaryJournal/list.htm">学生日记</a></li>
+                <li><a data="weekly" class="no_current" href="/student/weeklyJournal/list.htm">学生周记</a></li>
+                <li>
+                    <a data="inter-info" class="no_current" href="/student/internship/info.htm">学生实习信息</a>
+                </li>
+                <li><a data="myInfo" class="no_current" href="/teacher/my_info.htm">我的信息</a></li>
+                <li><a data="password" class="no_current" href="/user/change_password.htm">修改密码</a></li>
+                <li><a data="myBulletin" class="no_current" href="/bulletin/myBulletin.htm">我的公告</a></li>
+            </ul>
+            <#assign menuTitle="带队老师 &gt;" />
+        </#if>
+        <#if logInfo?? && logInfo.tutor>
+            <span class="title">实习导师</span>
+            <ul class="menu_list">
+                <li><a data="examine" class="no_current" href="/examine/list.htm">待审核消息</a></li>
+                <#if isLeader?? && isLeader>
+                    <li><a data="student" class="no_current" href="/student/list.htm">学生基础信息</a></li>
+                    <li><a data="tutor" class="no_current" href="/tutor/list.htm">单位实习导师</a></li>
+                </#if>
+                <li><a data="attend" class="no_current" href="/student/attend/list.htm">学生签到</a></li>
+                <li><a data="leave" class="no_current" href="/student/leave/list.htm">学生请假</a></li>
+                <li><a data="diary" class="no_current" href="/student/diaryJournal/list.htm">学生日记</a></li>
+                <li><a data="weekly" class="no_current" href="/student/weeklyJournal/list.htm">学生周记</a></li>
+                <li>
+                    <a data="inter-info" class="no_current" href="/student/internship/info.htm">学生实习信息</a>
+                </li>
+                <li><a data="company" class="no_current" href="/company/list.htm">实习单位</a></li>
+                <li><a data="myInfo" class="no_current" href="/tutor/my_info.htm">我的信息</a></li>
+                <li><a data="password" class="no_current" href="/user/change_password.htm">修改密码</a></li>
+                <li><a data="myBulletin" class="no_current" href="/bulletin/myBulletin.htm">我的公告</a></li>
+            </ul>
+            <#assign menuTitle="实习导师 &gt;" />
+        </#if>
+        <#if logInfo?? && logInfo.student>
+            <span class="title">学生平台</span>
+            <ul class="menu_list">
+                <li><a data="attend" class="no_current" href="/student/attend/list.htm">签到</a></li>
+                <li><a data="leave" class="no_current" href="/student/leave/list.htm">请假</a></li>
+                <li><a data="diary" class="no_current" href="/student/diaryJournal/list.htm">日记</a></li>
+                <li><a data="weekly" class="no_current" href="/student/weeklyJournal/list.htm">周记</a></li>
+                <li>
+                    <a data="inter-info" class="no_current" href="/student/internship/info.htm">我的实习信息</a>
+                </li>
+                <li><a data="myInfo" class="no_current" href="/student/my_info.htm">我的信息</a></li>
+                <li><a data="password" class="no_current" href="/user/change_password.htm">修改密码</a></li>
+            </ul>
+            <#assign menuTitle="学生平台 &gt;" />
+        </#if>
+    </div>
+    <div class="split">
+        <img src="/static/images/menu/menu_side_bar.jpg">
+    </div>
+</div>

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.teacher_list_panel {
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.teacher_list_panel .user_list .user_node {
+    height: 3.8rem;
+}
+
+.teacher_list_panel .user_list .user_node .operate {
+    height: 3.8rem;
+}
+
+.teacher_list_panel .user_list .user_node .operate .operate_list .assign {
+    padding-top: 1rem;
+}
+
+.teacher_list_panel .user_list .user_node .user_show {
+    height: 3.3rem;
+}

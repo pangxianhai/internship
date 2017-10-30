@@ -1,0 +1,37 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.tutor_list_panel {
+    overflow: hidden;
+}
+
+.tutor_list_panel .user_list .user_node {
+    height: 5rem;
+}
+
+.tutor_list_panel .user_list .user_node .operate {
+    height: 5rem;
+}
+
+.tutor_list_panel .user_list .user_node .user_show {
+    height: 4.5rem;
+}
+
+.tutor_list_panel .user_list .user_node .operate .operate_list li._tutor {
+    background-color: #3f55a0;
+}
+
+.tutor_list_panel .user_list .user_node .operate .operate_list li._delete {
+    background-color: #ff0000;
+    line-height: 5rem;
+    font-size: 14px;
+}
+
+.tutor_list_panel .user_list .user_node .operate .operate_list li ._assign {
+    width: 2.3rem;
+    line-height: 1rem;
+    margin: auto;
+    padding-top: 1.5rem;
+}

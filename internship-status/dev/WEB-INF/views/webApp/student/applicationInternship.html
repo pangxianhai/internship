@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="申请实习"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/applicationInternship.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/student/applicationInternship.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="student_application_panel">
+    <form id="applicationForm">
+        <table class="student_info_panel">
+            <tr>
+                <td class="_tips">学号:</td>
+                <td><input name="studentNumber" type="text" placeholder="学号"/></td>
+            </tr>
+            <tr>
+                <td class="_tips">密码:</td>
+                <td><input name="password" type="password" placeholder="密码"/></td>
+            </tr>
+            <tr>
+                <td class="_tips">确认密码:</td>
+                <td><input name="passwordAgain" type="password" placeholder="确认密码"/></td>
+            </tr>
+            <tr>
+                <td class="_tips">姓名:</td>
+                <td><input name="name" type="text" placeholder="姓名"/></td>
+            </tr>
+            <tr>
+                <td class="_tips">性别:</td>
+                <td>
+                    <select name="sexCode">
+                        <#list sexes as sex>
+                            <option value="${sex.code}">${sex.desc}</option>
+                        </#list>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="_tips">联系方式:</td>
+                <td><input name="phone" type="text" placeholder="联系方式"/></td>
+            </tr>
+            <tr>
+                <td class="_tips">学校:</td>
+                <td class="university">
+                    <select name="universityDesId"></select>
+                    <select name="collegeDesId"></select>
+                    <select name="departmentDesId"></select>
+                    <select name="specialityDesId"></select>
+                </td>
+            </tr>
+            <tr>
+                <td class="_tips">年级:</td>
+                <td><input name="grade" type="text" placeholder="年级"/></td>
+            </tr>
+            <tr>
+                <td class="_tips">学位:</td>
+                <td>
+                    <select name="academicianTypeCode">
+                        <#list academicianTypes as act>
+                            <option value="${act.code}">${act.desc}</option>
+                        </#list>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="_tips">期望实习单位:</td>
+                <td>
+                    <select name="expectCompany">
+                        <option value="">请选择实习单位</option>
+                        <#list companies as company>
+                            <option value="${company.companyName}">${company.companyName}</option>
+                        </#list>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="_tips">备注:</td>
+                <td><input name="remark" type="text" placeholder="备注"/></td>
+            </tr>
+        </table>
+    </form>
+    <div class="submit_panel">
+        <button id="submitBtn" class="button200">提交</button>
+    </div>
+</div>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+</body>
+</html>

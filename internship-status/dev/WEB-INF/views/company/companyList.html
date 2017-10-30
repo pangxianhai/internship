@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="登录-实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="系统登录"/>
+    <title>用户列表-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/company/company_list.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/company/company_list.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} 实习单位列表
+                <#if action=='addStudent'>&gt; 分配学生到单位</#if>
+            </span>
+            <hr/>
+        </div>
+        <div class="company_info">
+            <div class="search">
+                <form id="search_form">
+                    <table>
+                        <tr>
+                            <td>单位名字:</td>
+                            <td><input name="companyName" type="text" value="${company.companyName}"/></td>
+                            <td>单位地址:</td>
+                            <td><input name="companyAddress" type="text" value="${company.companyAddress}"/></td>
+                            <td>联系方式:</td>
+                            <td><input name="phone" type="text" value="${company.phone}"/></td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="search_btn">
+                    <a id="search_action" class="btn45" href="javascript:void(0)">搜索</a>
+                    <#if logInfo?? && logInfo.sysadmin>
+                        <a id="add_company_action" class="btn45 add" href="/company/add.htm">添加实习单位</a>
+                        <a id="delete_company_all" class="btn45 delete" href="javascript:void(0)">批量删除实习单位</a>
+                    </#if>
+                </div>
+            </div>
+            <table class="content_table">
+                <thead>
+                <tr>
+                    <th><input item="select_all" type="checkbox"/> 全选</th>
+                    <th>单位名字</th>
+                    <th>单位地址</th>
+                    <th>联系方式</th>
+                    <th>容纳实习人数</th>
+                    <th>当前实习人数</th>
+                    <th>注册时间</th>
+                    <#if  logInfo?? && (logInfo.sysadmin || action == 'addStudent')>
+                        <th>操作</th>
+                    </#if>
+                </tr>
+                </thead>
+                <tbody id="u_data"></tbody>
+            </table>
+            <div class="page_list"></div>
+        </div>
+    </div>
+</div>
+<input id="studentId" value="${studentId}" style="display: none"/>
+<input id="action" value="${action}" style="display: none"/>
+<input id="isSysadmin" value="${(logInfo.sysadmin)}" style="display: none"/>
+<input id="menu_id" value="company" style="display: none"/>
+<#include "/footer.html" />
+</body>
+</html>

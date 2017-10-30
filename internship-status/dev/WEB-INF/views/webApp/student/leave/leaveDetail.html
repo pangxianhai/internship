@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="请假详情"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/leave/leaveDetail.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/student/leave/leaveDetail.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="leave_detail">
+    <div class="leave_message">
+        <table>
+            <tr>
+                <td class="tips">请假类型：</td>
+                <td>${leaveRecord.leaveType.desc}</td>
+            </tr>
+            <tr>
+                <td class="tips">请假时间：</td>
+                <td>
+                    ${leaveRecord.beginDay?number_to_datetime?string("yyyy-MM-dd")}${leaveRecord.beginTimeInterval.desc}
+                    &nbsp;到&nbsp;
+                    ${leaveRecord.endDay?number_to_datetime?string("yyyy-MM-dd")}${leaveRecord.endTimeInterval.desc}
+                </td>
+            </tr>
+            <tr>
+                <td class="tips">请假原因：</td>
+                <td>${leaveRecord.reason}</td>
+            </tr>
+            <tr>
+                <td class="tips">状态：</td>
+                <td>${leaveRecord.leaveStatus.desc}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="leave_flow">
+        <ul></ul>
+    </div>
+    <div class="examine">
+        <button id="examineBtn" class="button200">审核</button>
+    </div>
+</div>
+<div class="cover_panel"></div>
+<div id="examinePanel" class="examine_panel">
+    <ul class="examine_list_panel">
+        <#list examineStatus as es>
+            <li class="_node <#if es_index == examineStatus?size - 1>_last</#if>"
+                examineStatusCode="${es.code}">
+                <p class="_tips">${es.desc}</p>
+                <i class="_icon">&#10003;</i>
+            </li>
+        </#list>
+    </ul>
+    <ul class="button_list">
+        <li class="_node">
+            <button item="cancelBtn">取消</button>
+        </li>
+    </ul>
+</div>
+<input id="leave_id" value="${leaveRecord.id}" type="hidden"/>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="user_id" value="${logInfo.id}" type="hidden"/>
+</body>
+</html>

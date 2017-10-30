@@ -1,0 +1,40 @@
+@charset "UTF-8";
+.weekly-journal-panel {
+    margin-left: 10px;
+}
+
+.weekly-journal-panel .journal-title {
+    overflow: hidden;
+}
+
+.weekly-journal-panel .journal-title li {
+    height: 21px;
+    line-height: 21px;
+    margin-top: 10px;
+}
+
+.weekly-journal-panel input.error {
+    border: 1.5px solid #c90066;
+}
+
+.weekly-journal-panel .journal-title .journal-title-table td {
+    height: 25px;
+}
+
+.weekly-journal-panel .journal-title .journal-title-table .tips {
+    text-align: right;
+}
+
+.weekly-journal-panel .journal-title .journal-title-table ._content {
+    padding-right: 20px;
+}
+
+.weekly-journal-panel .journal-tips {
+    line-height: 28px;
+    margin-top: 5px;
+}
+
+.weekly-journal-panel .weekly-journal-write-btn-div {
+    margin: 15px auto 8px 225px;
+    width: 243px;
+}

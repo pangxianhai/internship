@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="老师列表"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/teacher/teacherList.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/user/userList.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/teacher/teacherList.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="teacher_list_panel">
+    <ul class="user_list" id="teacherList">
+    </ul>
+</div>
+<input id="action" type="hidden" value="${action}"/>
+<input id="studentDesId" type="hidden" value="${studentDesId}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="学生实习质量评价表"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/student/evaluation/evaluationDetail.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/student/evaluation/evaluationDetail.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<div class="evaluation_detail_panel">
+    <#include "/webApp/header.html" />
+    <table class="evaluation_table">
+        <thead>
+        <tr>
+            <td>项目</td>
+            <td colspan="2">评价标准</td>
+            <td>评价等级</td>
+        </tr>
+        </thead>
+        <tbody id="evaluation_rules">
+        <#list evaluation.evaluationResult as er>
+            <tr>
+                <td class="subject">${er.subject}</td>
+                <td>${er_index + 1}</td>
+                <td class="evaluation_rule">${er.evaluationRule}</td>
+                <td>${er.grade.desc}</td>
+            </tr>
+        </#list>
+        </tbody>
+    </table>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

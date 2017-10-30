@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.add_company_panel {
+    overflow: hidden;
+    margin: 20px 0 10px 30px;
+}
+
+.add_company_panel .info_title {
+    text-align: right;
+    float: left;
+    line-height: 40px;
+}
+
+.add_company_panel .info_input {
+    float: left;
+    line-height: 40px;
+}
+
+.add_company_panel .submit_btn {
+    margin-top: 20px;
+}

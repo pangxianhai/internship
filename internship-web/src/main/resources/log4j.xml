@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE.OUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] [%F] %M : %L -- %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG"/>
+            <param name="LevelMax" value="INFO"/>
+            <param name="AcceptOnMatch" value="false"/>
+        </filter>
+
+    </appender>
+    <appender name="CONSOLE.ERR" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.err"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] [%F] %M : %L -- %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="warn"/>
+            <param name="LevelMax" value="fatal"/>
+            <param name="AcceptOnMatch" value="false"/>
+        </filter>
+    </appender>
+    <appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.base}/logs/internship-web.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="INFO"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] [%F] %M : %L -- %m%n"/>
+        </layout>
+    </appender>
+    <logger name="cn.com.besttone.mall.login">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="org.springframework">
+        <level value="INFO"/>
+    </logger>
+    <logger name="freemarker">
+        <level value="INFO"/>
+    </logger>
+    <logger name="java.sql">
+        <level value="DEBUG" />
+    </logger>
+    <logger name="org.apache.ibatis">
+        <level value="DEBUG" />
+    </logger>
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="PROJECT"/>
+        <appender-ref ref="CONSOLE.OUT"/>
+        <appender-ref ref="CONSOLE.ERR"/>
+    </root>
+</log4j:configuration>
+

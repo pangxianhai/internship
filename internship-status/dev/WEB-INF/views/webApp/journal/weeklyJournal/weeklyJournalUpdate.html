@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="更新周记"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/journal/weeklyJournal/weeklyJournalUpdate.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/redactor.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/journal/weeklyJournal/weeklyJournalWrite.css" rel="stylesheet"
+          type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="weekly_journal_write_panel">
+    <form id="weeklyJournalUpdateForm">
+        <input name="desId" value="${internshipNotes.desId}" type="hidden"/>
+        <div class="weekly_journal_write_head">
+            <table>
+                <tr>
+                    <td>实习时间：</td>
+                    <td>
+                        ${internshipNotes.beginDay?number_to_datetime?string("yyyy-MM-dd")}
+                        &nbsp;至&nbsp;
+                        ${internshipNotes.endDay?number_to_datetime?string("yyyy-MM-dd")}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="journal_tips">本周实习内容：</div>
+        <div class="journal_content umeditor" id="weeklyContent">${internshipNotes.notesContent}</div>
+        <div class="submit_weekly_journal_btn">
+            <a href="javascript:void(0)" class="button" id="updateWeeklyJournalBtn">更新</a>
+        </div>
+    </form>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

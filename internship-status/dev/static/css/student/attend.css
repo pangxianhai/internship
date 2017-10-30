@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.student-attend {
+    background-color: #EEE;
+    border-radius: 8px;
+}
+
+.student-attend .title {
+    margin-left: 10px;
+    font-weight: 900;
+}
+
+.student-attend .today-attend, .history-attend {
+    line-height: 40px;
+}
+
+.student-attend .btn45 {
+    margin-left: 10px;
+}
+
+.student-attend .history-attend .btn45 {
+    width: 60px;
+    letter-spacing: 0px;
+}
+
+.examine_panel .notice {
+    margin-bottom: 12px;
+}

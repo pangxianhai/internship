@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="登录-实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="系统登录"/>
+    <title>带队老师列表-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/teacher/teacherList.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/teacher/teacherList.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} 带队老师列表
+                <#if action=='addStudent'>&gt; 分配学生给带队老师</#if>
+            </span>
+            <hr/>
+        </div>
+        <div class="teacher_info">
+            <div class="search">
+                <form id="search_form">
+                    <table>
+                        <tr>
+                            <td class="_tips">姓名:</td>
+                            <td><input name="name" type="text" value="${teacher.name}"/></td>
+                            <td class="_tips">联系方式:</td>
+                            <td><input name="phone" type="text" value="${(teacher.userInfo.phone)!''}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="_tips">职称:</td>
+                            <td><input name="rank" type="text" value="${teacher.rank}"/></td>
+                            <td class="_tips">角色:</td>
+                            <td>
+                                <select name="teacherTypeCode">
+                                    <option value="">全部</option>
+                                    <#list roleTypes as rt>
+                                        <option value="${rt.code}">${rt.desc}</option>
+                                    </#list>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="_tips">学校:</td>
+                            <td colspan="3" width="660" class="university_select">
+                                <select name="universityDesId"></select>
+                                <select name="collegeDesId"></select>
+                                <select name="departmentDesId"></select>
+                                <select name="specialityDesId"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="search_btn">
+                    <a id="search_action" class="btn45" href="javascript:void(0)">搜索</a>
+                    <#if isLeader || logInfo.sysadmin>
+                        <a id="add_teacher_btn" class="btn45 add" href="/teacher/add.htm">添加带队老师</a>
+                    </#if>
+                </div>
+            </div>
+            <table class="content_table">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>用户名</th>
+                    <th>联系方式</th>
+                    <th>性别</th>
+                    <th>学校</th>
+                    <th>职称</th>
+                    <th>角色</th>
+                    <th>当前实习人数</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="u_data"></tbody>
+            </table>
+            <div class="page_list"></div>
+        </div>
+    </div>
+</div>
+<div class="teacher_type_select_panel">
+    <select id="teacherType">
+        <#list leaderTypes as rt>
+            <option value="${rt.code}">${rt.desc}</option>
+        </#list>
+    </select>
+</div>
+<#include "/footer.html" />
+<input id="studentId" value="${studentId}" type="hidden"/>
+<input id="action" value="${action}" type="hidden"/>
+<input id="isSysadmin" value="${logInfo.sysadmin}" type="hidden"/>
+<input id="isLeader" value="${isLeader}" type="hidden"/>
+<input id="universityDesId" value="${teacher.universityDesId}" type="hidden"/>
+<input id="collegeDesId" value="${teacher.collegeDesId}" type="hidden"/>
+<input id="departmentDesId" value="${teacher.departmentDesId}" type="hidden"/>
+<input id="specialityDesId" value="${teacher.specialityDesId}" type="hidden"/>
+<input id="isUniversityLeader" value="${currentTeacher.universityLeader}" type="hidden"/>
+<input id="isCollegeLeader" value="${currentTeacher.collegeLeader}" type="hidden"/>
+<input id="isDepartmentLeader" value="${currentTeacher.departmentLeader}" type="hidden"/>
+<input id="isSpecialityLeader" value="${currentTeacher.specialityLeader}" type="hidden"/>
+<input id="menu_id" value="teacher" type="hidden"/>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="导师信息"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/tutor/tutorDetail.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/user/userInfo.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/tutor/tutorDetail.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="tutor_detail_panel">
+    <ul class="user_list">
+        <li class="_node">
+            <p class="_tips">姓名</p>
+            <p class="_content">${tutor.name}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">性别</p>
+            <p class="_content">${tutor.userInfo.sex.desc}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">联系方式</p>
+            <p class="_content">${tutor.userInfo.phone}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">所在部门</p>
+            <p class="_content">${tutor.department}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">角色</p>
+            <p class="_content">${tutor.tutorType.desc}</p>
+        </li>
+        <li class="_node _last">
+            <p class="_tips">当前实习人数</p>
+            <p class="_content">${tutor.studentNumber}</p>
+        </li>
+    </ul>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

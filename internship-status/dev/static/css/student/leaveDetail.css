@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.examine {
+    margin-top: 15px;
+    margin-left: 25px;
+    display: none;
+}
+
+.leave-info {
+    line-height: 25px;
+    margin-left: 25px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.leave-info .leave-title, .leave-info .leave-content {
+    float: left;
+}
+
+.leave-info .leave-title {
+    text-align: right;
+}
+
+.leave-flow {
+    overflow: hidden;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.leave-flow .flow-node {
+    float: left;
+}
+
+.leave-flow .-passed {
+    background: url("/static/images/flow/node-pass.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    line-height: 80px;
+    text-align: center;
+}
+
+.leave-flow .-apply {
+    background: url("/static/images/flow/node-apply.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    line-height: 80px;
+    text-align: center;
+}
+
+.leave-flow .-no-pass {
+    background: url("/static/images/flow/node-no-pass.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    line-height: 80px;
+    text-align: center;
+}
+
+.leave-flow .-passed-line {
+    background: url("/static/images/flow/line-pass.png") no-repeat;
+    height: 2px;
+    width: 80px;
+    margin-top: 38px;
+}
+
+.leave-flow .-no-passed-line {
+    background: url("/static/images/flow/line-no-pass.png") no-repeat;
+    height: 2px;
+    width: 80px;
+    margin-top: 38px;
+}
+
+.leave-flow .-passed-to-no-pass-line {
+    background: url("/static/images/flow/line-pass-to-no-pass.png") no-repeat;
+    height: 2px;
+    width: 80px;
+    margin-top: 38px;
+}

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.journal.mapper.InternshipNotesMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.journal.model.InternshipNotes">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="student_id" property="studentId" jdbcType="BIGINT"/>
+        <result column="student_name" property="studentName" jdbcType="VARCHAR"/>
+        <result column="begin_day" property="beginDay" jdbcType="BIGINT"/>
+        <result column="end_day" property="endDay" jdbcType="BIGINT"/>
+        <result column="notes_content" property="notesContent" jdbcType="VARCHAR"/>
+        <result column="notes_review" property="notesReview" jdbcType="VARCHAR"/>
+        <result column="notes_type" property="notesType"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="tutor_reviewer_id" property="tutorReviewerId" jdbcType="BIGINT"/>
+        <result column="tutor_reviewer" property="tutorReviewer" jdbcType="VARCHAR"/>
+        <result column="tutor_remark" property="tutorRemark" jdbcType="VARCHAR"/>
+        <result column="tutor_remark_time" property="tutorRemarkTime" jdbcType="BIGINT"/>
+        <result column="teacher_reviewer_id" property="teacherReviewerId" jdbcType="BIGINT"/>
+        <result column="teacher_reviewer" property="teacherReviewer" jdbcType="VARCHAR"/>
+        <result column="teacher_remark" property="teacherRemark" jdbcType="VARCHAR"/>
+        <result column="teacher_remark_time" property="teacherRemarkTime" jdbcType="BIGINT"/>
+        <result column="status" property="status"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        student_id,student_name,begin_day,end_day,notes_content,notes_review,notes_type,
+        tutor_reviewer_id,tutor_reviewer,tutor_remark,tutor_remark_time,
+        teacher_reviewer_id,teacher_reviewer,teacher_remark,teacher_remark_time,
+        status,created_by,created_time,updated_by,updated_time
+    </sql>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.journal.model.InternshipNotes">
+        insert into internship_notes(<include refid="Base_Column_List"/>)
+        values(
+        #{studentId,jdbcType=BIGINT},
+        #{studentName,jdbcType=VARCHAR},
+        #{beginDay,jdbcType=BIGINT},
+        #{endDay,jdbcType=BIGINT},
+        #{notesContent,jdbcType=VARCHAR},
+        #{notesReview,jdbcType=VARCHAR},
+        #{notesType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{tutorReviewerId,jdbcType=BIGINT},
+        #{tutorReviewer,jdbcType=VARCHAR},
+        #{tutorRemark,jdbcType=VARCHAR},
+        #{tutorRemarkTime,jdbcType=BIGINT},
+        #{teacherReviewerId,jdbcType=BIGINT},
+        #{teacherReviewer,jdbcType=VARCHAR},
+        #{teacherRemark,jdbcType=VARCHAR},
+        #{teacherRemarkTime,jdbcType=BIGINT},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.journal.model.InternshipNotes">
+        update internship_notes
+        <set>
+            <if test="notesContent != null">
+                notes_content = #{notesContent,jdbcType=VARCHAR},
+            </if>
+            <if test="notesReview != null">
+                notes_review = #{notesReview,jdbcType=VARCHAR},
+            </if>
+            <if test="tutorReviewerId != null">
+                tutor_reviewer_id = #{tutorReviewerId,jdbcType=BIGINT},
+            </if>
+            <if test="tutorReviewer != null">
+                tutor_reviewer = #{tutorReviewer,jdbcType=VARCHAR},
+            </if>
+            <if test="tutorRemark != null">
+                tutor_remark = #{tutorRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="tutorRemarkTime != null">
+                tutor_remark_time = #{tutorRemarkTime,jdbcType=BIGINT},
+            </if>
+            <if test="teacherReviewerId != null">
+                teacher_reviewer_id = #{teacherReviewerId,jdbcType=BIGINT},
+            </if>
+            <if test="teacherReviewer != null">
+                teacher_reviewer = #{teacherReviewer,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherRemark != null">
+                teacher_remark = #{teacherRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherRemarkTime != null">
+                teacher_remark_time = #{teacherRemarkTime,jdbcType=BIGINT},
+            </if>
+            <if test="updatedBy != null">
+                updated_by = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=BIGINT},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.journal.model.InternshipNotes">
+        select n.id, n.student_id, n.student_name, n.begin_day, n.end_day, n.notes_content, n.notes_review,
+        n.notes_type, n.tutor_reviewer_id,n.tutor_reviewer, n.tutor_remark, n.tutor_remark_time,
+        n.teacher_reviewer_id,n.teacher_reviewer, n.teacher_remark, n.teacher_remark_time,
+        n.status, n.created_by, n.created_time, n.updated_by, n.updated_time
+        from internship_notes n inner join student s on (n.student_id = s.id)
+        <where>
+            <if test="id != null">
+                and n.id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="studentId != null">
+                and n.student_id = #{studentId,jdbcType=BIGINT}
+            </if>
+            <if test="studentName != null">
+                and n.student_name = #{studentName,jdbcType=VARCHAR}
+            </if>
+            <if test="notesType != null">
+                and n.notes_type = #{notesType,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler}
+            </if>
+            <if test="beginDay != null">
+                and n.begin_day = #{beginDay,jdbcType=BIGINT}
+            </if>
+            <if test="beginDay != null and endDay != null">
+                and n.begin_day &lt;= #{endDay,jdbcType=BIGINT} and end_day &gt;= #{beginDay,jdbcType=BIGINT}
+            </if>
+            <if test="student != null">
+                <if test="student.id != null">
+                    and n.student_id = #{student.id,jdbcType=BIGINT}
+                </if>
+                <if test="student.companyId != null">
+                    and s.company_id = #{student.companyId,jdbcType=BIGINT}
+                </if>
+                <if test="student.tutorId != null">
+                    and s.tutor_id = #{student.tutorId,jdbcType=BIGINT}
+                </if>
+                <if test="student.universityId != null">
+                    and s.university_id = #{student.universityId,jdbcType=BIGINT}
+                </if>
+                <if test="student.collegeId != null">
+                    and s.college_id = #{student.collegeId,jdbcType=BIGINT}
+                </if>
+                <if test="student.departmentId != null">
+                    and s.department_id = #{student.departmentId,jdbcType=BIGINT}
+                </if>
+                <if test="student.specialityId != null">
+                    and s.speciality_id = #{student.specialityId,jdbcType=BIGINT}
+                </if>
+                <if test="student.teacherId != null">
+                    and s.teacher_id = #{student.teacherId,jdbcType=BIGINT}
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

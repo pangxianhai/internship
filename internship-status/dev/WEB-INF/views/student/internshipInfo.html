@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <title>实习信息-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/student/internship_info.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/student/internshipInfo.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} 学生实习信息</span>
+            <hr/>
+        </div>
+        <div class="student_info">
+            <div class="search">
+                <form id="search_form">
+                    <table>
+                        <tr>
+                            <td>姓名:</td>
+                            <td><input name="name" type="text" value=""/></td>
+                            <td>学号:</td>
+                            <td><input name="studentNumber" type="text" value=""/></td>
+                            <td>实习单位:</td>
+                            <td><input name="companyName" type="text" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td>带队老师:</td>
+                            <td><input name="teacherName" type="text" value=""/></td>
+                            <td>实习导师:</td>
+                            <td><input name="tutorName" type="text" value=""/></td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="search_btn">
+                    <a id="search_action" class="btn45" href="javascript:void(0)">搜索</a>
+                </div>
+            </div>
+            <table class="content_table">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>学号</th>
+                    <th>日志统计</th>
+                    <th>周记统计</th>
+                    <th>实习单位考评表</th>
+                    <th>质量控制表</th>
+                    <th>出勤统计</th>
+                    <th>实习报告</th>
+                    <th>总成绩</th>
+                </tr>
+                </thead>
+                <tbody id="u_data"></tbody>
+            </table>
+            <div class="page_list"></div>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+<input id="isTutor" value="${logInfo.tutor}" type="hidden"/>
+<input id="isTeacher" value="${logInfo.teacher}" type="hidden"/>
+<input id="isStudent" value="${logInfo.student}" type="hidden"/>
+<input id="menu_id" value="inter-info" type="hidden"/>
+</body>
+</html>

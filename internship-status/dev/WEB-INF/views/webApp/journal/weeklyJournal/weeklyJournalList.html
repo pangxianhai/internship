@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="实习周记"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/journal/weeklyJournal/weeklyJournalList.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/journal/weeklyJournal/weeklyJournalList.css" rel="stylesheet"
+          type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="weekly_journal_panel">
+    <#if logInfo.isStudent()>
+        <div class="write_weekly_journal">
+            <a class="button" href="/webApp/student/weeklyJournal/write.htm?returnUrl=${locationURL}">写周记&nbsp;&gt;</a>
+        </div>
+    </#if>
+    <div class="weekly_journal_list_panel">
+        <ul id="weeklyJournalList" class="weekly_journal_list">
+        </ul>
+    </div>
+</div>
+<div style="display: none">
+    <form id="weeklyJournalSearchForm">
+        <input name="student.desId" value="${internshipNotes.student.desId}" type="hidden"/>
+    </form>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+</body>
+</html>

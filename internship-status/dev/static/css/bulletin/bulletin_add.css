@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.add_bulletin_panel {
+    overflow: hidden;
+    margin: 20px 0 10px 30px;
+}
+
+.add_bulletin_panel .info_title {
+    text-align: right;
+    float: left;
+    line-height: 40px;
+}
+
+.add_bulletin_panel .info_input {
+    float: left;
+}
+
+.add_bulletin_panel .info_input #title {
+    width: 330px;
+}
+
+.add_bulletin_panel .info_input li {
+    margin-top: 9px;
+    margin-bottom: 13px;
+}
+
+.add_bulletin_panel .submit_btn {
+    margin-top: 20px;
+}

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.teacher_info_panel {
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.teacher_info_panel ._node a {
+    color: #000;
+}
+
+.teacher_info_panel .logout_panel {
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.teacher_info_panel .logout_panel .logout_node {
+    margin: 0;
+    text-align: center;
+}

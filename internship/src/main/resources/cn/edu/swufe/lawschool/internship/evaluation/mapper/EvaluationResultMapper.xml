@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.evaluation.mapper.EvaluationResultMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.evaluation.model.EvaluationResult">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="evaluation_id" property="evaluationId" jdbcType="BIGINT"/>
+        <result column="subject" property="subject" jdbcType="VARCHAR"/>
+        <result column="evaluation_rule" property="evaluationRule" jdbcType="VARCHAR"/>
+        <result column="grade" property="grade"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="status" property="status"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        evaluation_id,subject,evaluation_rule,grade,status,created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.evaluation.model.EvaluationResult">
+        insert into internship_evaluation_result(<include refid="Base_Column_List"/>)
+        values(
+        #{evaluationId,jdbcType=BIGINT},
+        #{subject,jdbcType=VARCHAR},
+        #{evaluationRule,jdbcType=VARCHAR},
+        #{grade,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.evaluation.model.EvaluationResult">
+        update internship_evaluation_result
+        <set>
+            <if test="grade != null">
+                grade = #{grade,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            <if test="status != null">
+                status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.evaluation.model.EvaluationResult">
+        select id,
+        <include refid="Base_Column_List"/>
+        from internship_evaluation_result
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="evaluationId != null">
+                and evaluation_id = #{evaluationId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+</mapper>

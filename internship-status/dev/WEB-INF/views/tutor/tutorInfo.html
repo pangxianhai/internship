@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <title>${tutor.name}的信息-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/css/myInfo.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/menu.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} 我的信息</span>
+            <hr/>
+        </div>
+        <div class="myInfo">
+            <table>
+                <tr>
+                    <td class="title">用户名：</td>
+                    <td>${tutor.userInfo.userName}</td>
+                    <td class="title">姓名：</td>
+                    <td>${tutor.name}</td>
+                    <td class="title">性别：</td>
+                    <td>${tutor.userInfo.sex.desc}</td>
+                </tr>
+                <tr>
+                    <td class="title">部门(科室)：</td>
+                    <td>${tutor.department}</td>
+                    <td class="title">所在单位：</td>
+                    <td>${tutor.companyName}</td>
+                    <td class="title">当前实习人数：</td>
+                    <td>${tutor.studentNumber}</td>
+                </tr>
+                <tr>
+                    <td class="title">角色：</td>
+                    <td>${tutor.tutorType.desc}</td>
+                    <td class="title">联系方式：</td>
+                    <td>${tutor.userInfo.phone}</td>
+                </tr>
+            </table>
+            <div class="update_div">
+                <a class="btn243" href="/tutor/updateInfo.htm">修改</a>
+            </div>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+<input id="menu_id" value="myInfo" style="display: none"/>
+</body>
+</html>

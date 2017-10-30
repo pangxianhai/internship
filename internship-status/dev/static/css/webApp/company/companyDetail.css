@@ -1,0 +1,31 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.company_detail_panel {
+    overflow: hidden;
+}
+
+.company_desc_panel {
+    overflow: hidden;
+    top: 0;
+    width: 96%;
+    height: 100%;
+    text-align: center;
+    visibility: hidden;
+    background: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#222222));
+    color: #FFF;
+}
+
+.company_desc_panel .company_desc {
+    padding: 1rem;
+}
+
+.company_desc_panel .button {
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    background-color: #FFF;
+    margin-right: 1rem;
+}

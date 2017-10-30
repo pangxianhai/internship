@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.file.mapper.FileRecordMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.file.model.FileRecord">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="file_name" property="fileName" jdbcType="VARCHAR"/>
+        <result column="file_content" property="fileContent" jdbcType="VARCHAR"/>
+        <result column="status" property="status" typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        file_name,file_content,status,created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.file.model.FileRecord">
+        select id,
+        <include refid="Base_Column_List"/>
+        from file_record
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="fileName != null">
+                and file_name = #{fileName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.file.model.FileRecord">
+        insert into file_record(<include refid="Base_Column_List"/>)
+        values(
+        #{fileName,jdbcType=VARCHAR},
+        #{fileContent,jdbcType=VARCHAR},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+</mapper>

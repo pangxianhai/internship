@@ -1,0 +1,31 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.bulletin_detail_panel {
+    overflow: hidden;
+}
+
+.bulletin_detail_panel .bulletin_head {
+    overflow: hidden;
+}
+
+.bulletin_detail_panel .bulletin_head .bulletin_title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 1rem;
+}
+
+.bulletin_detail_panel .bulletin_head .bulletin_tag {
+    text-align: center;
+    color: #888;
+    line-height: 1rem;
+    margin-top: 0.5rem;
+}
+
+.bulletin_detail_panel .bulletin_content {
+    overflow: hidden;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+}

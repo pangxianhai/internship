@@ -1,0 +1,50 @@
+@charset "UTF-8";
+.ui_ed_container {
+    position: relative;
+    border: 1px solid #d4d4d4;
+    box-shadow: 2px 2px 5px #d3d6da;
+    background-color: #fff;
+}
+
+.ui_ed_toolbar {
+    overflow: hidden;
+    min-height: 25px;
+    box-shadow: 2px 2px 5px #d3d6da;
+    padding: 5px 0 5px 0;
+}
+
+.ui_ed_body {
+    overflow: hidden;
+    outline: none;
+}
+
+.ui_ed_toolbar .ui_ed_toolbar_item {
+    float: left;
+    margin-left: 10px;
+}
+
+.ui_ed_toolbar .ui_ed_toolbar_icon {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-image: url(/static/js/lib/peditor/themes/default/images/icons.png);
+    background-image: url(/static/js/lib/peditor/themes/default/images/icons.gif) \9;
+}
+
+.ui_ed_toolbar .ui_ed_toolbar_bold {
+    background-position: 0 0;
+}
+
+.ui_ed_toolbar .ui_ed_toolbar_italic {
+    background-position: -60px 0;
+}
+
+.ui_ed_toolbar .ui_ed_toolbar_underline {
+    background-position: -140px 0;
+}
+
+.ui_ed_toolbar .ui_ed_toolbar_fore_color {
+    background-position: -720px 0;
+}

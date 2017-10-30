@@ -1,0 +1,160 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.leave_detail {
+    overflow: hidden;
+}
+
+.leave_detail .leave_message {
+    overflow: hidden;
+    margin: 1rem 0 0 1rem;
+}
+
+.leave_detail .leave_message td {
+    line-height: 1.2rem;
+}
+
+.leave_detail .leave_message .tips {
+    text-align: right;
+}
+
+.leave_detail .leave_flow {
+    overflow: hidden;
+    /*margin-top: 20px;*/
+}
+
+.leave_detail .leave_flow ul {
+    overflow: hidden;
+    width: 80px;
+    margin: auto;
+}
+
+.leave_detail .leave_flow .flow-node {
+    overflow: hidden;
+}
+
+.leave_detail .leave_flow .-passed {
+    background: url("/static/images/flow/node-pass.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    line-height: 80px;
+    text-align: center;
+}
+
+.leave_detail .leave_flow .-apply {
+    background: url("/static/images/flow/node-apply.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    line-height: 80px;
+    text-align: center;
+}
+
+.leave_detail .leave_flow .-no-pass {
+    background: url("/static/images/flow/node-no-pass.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    line-height: 80px;
+    text-align: center;
+}
+
+.leave_detail .leave_flow .-passed-line {
+    background: url("/static/images/flow/v-line-pass.png") no-repeat;
+    height: 40px;
+    width: 2px;
+    margin-left: 38px;
+    background-size: 2px 40px;
+}
+
+.leave_detail .leave_flow .-no-passed-line {
+    background: url("/static/images/flow/v-line-no-pass.png") no-repeat;
+    height: 40px;
+    width: 2px;
+    margin-left: 38px;
+    background-size: 2px 40px;
+}
+
+.leave_detail .leave_flow .-passed-to-no-pass-line {
+    background: url("/static/images/flow/v-line-pass-to-no-pass.png") no-repeat;
+    height: 40px;
+    width: 2px;
+    margin-left: 38px;
+    background-size: 2px 40px;
+}
+
+.leave_detail .examine {
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+}
+
+.leave_detail .examine .button200 {
+    width: 80%;
+    height: 2.5rem;
+}
+
+.examine_panel {
+    overflow: hidden;
+    top: 0;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    visibility: hidden;
+    position: fixed;
+    background: #FFF;
+    transform: translate3d(100%, 0px, 0px);
+    padding-top: 3rem;
+}
+
+.examine_panel .examine_list_panel {
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #FFF;
+    font-size: 13px;
+}
+
+.examine_panel .examine_list_panel ._node {
+    overflow: hidden;
+    height: 3rem;
+    line-height: 3rem;
+    margin-left: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.examine_panel .examine_list_panel ._node ._tips {
+    float: left;
+    width: 80%;
+}
+
+.examine_panel .examine_list_panel ._node ._icon {
+    color: #3f55a0;
+    display: none;
+    font-size: 16px;
+}
+
+.examine_panel .examine_list_panel ._node._last {
+    border-bottom: none;
+}
+
+.examine_panel .button_list {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.examine_panel .button_list ._node {
+    float: right;
+}
+
+.examine_panel .button_list ._node button {
+    width: 3rem;
+    height: 1.5rem;
+    border: 1px solid #888;
+    border-radius: 4px;
+    background-color: #FFF;
+    margin-right: 1rem;
+}

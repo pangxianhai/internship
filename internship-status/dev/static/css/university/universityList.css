@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.university_info {
+    overflow: hidden;
+}
+
+.university_info .content_table {
+}
+
+.university_info .content_table .name {
+    width: 30%;
+}
+
+.university_info .content_table .type {
+    width: 20%;
+}
+
+.university_info .content_table .path {
+    width: 30%;
+}
+
+.university_info .content_table .operate {
+    width: 20%;
+}
+
+.university_info .content_table .university_list {
+    overflow: hidden;
+}
+
+.university_info .content_table .university_list .name {
+    text-align: left;
+    height: 22px;
+}
+
+.university_info .content_table .university_list .name ._name {
+    float: left;
+    padding-left: 3px;
+}
+
+.university_info .content_table .university_list .name ._icon {
+    float: left;
+    width: 18px;
+    height: 18px;
+}
+
+.university_info .content_table .university_list .name ._icon._line {
+    background: url("/static/images/university/list/line.gif") no-repeat;
+}
+
+.university_info .content_table .university_list .name ._icon._join_bottom {
+    background: url("/static/images/university/list/joinbottom.gif") no-repeat;
+}
+
+.university_info .content_table .university_list .name ._icon._plus {
+    background: url("/static/images/university/list/plus.gif") no-repeat;
+}
+
+.university_info .content_table .university_list .name ._icon._minus {
+    background: url("/static/images/university/list/minus.gif") no-repeat;
+}
+
+.university_info .content_table .university_list .name ._icon._join {
+    background: url("/static/images/university/list/join.gif") no-repeat;
+}
+
+.update_panel {
+
+    overflow: hidden;
+}
+
+.update_panel .submit_btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.update_panel .submit_btn .btn45 {
+    width: 60px;
+    border-radius: 3px;
+}

@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.weekly_journal_write_panel {
+    overflow: hidden;
+}
+
+.weekly_journal_write_panel .weekly_journal_write_head {
+    overflow: hidden;
+    margin: 1rem 0 1rem 1rem;
+}
+
+.weekly_journal_write_panel .weekly_journal_write_head .button {
+    width: 5rem;
+    height: 1rem;
+}
+
+.weekly_journal_write_panel .journal_tips {
+    overflow: hidden;
+    margin: 0 0 0.5rem 5px;
+}
+
+.weekly_journal_write_panel .journal_content {
+    overflow: hidden;
+}
+
+.weekly_journal_write_panel .submit_weekly_journal_btn {
+    overflow: hidden;
+    margin: 1rem 0 1rem 0;
+}
+
+.weekly_journal_write_panel .submit_weekly_journal_btn a.button {
+    width: 60%;
+    margin: auto;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 8px;
+    font-size: 15px;
+    letter-spacing: 8px;
+}
+
+.weekly_journal_write_panel .date_picker {
+    height: 0;
+    position: fixed;
+    bottom: 0;
+    transition: height .5s;
+    background-color: #FFF;
+}
+
+.weekly_journal_write_panel .date_picker_activity {
+    height: 285px;
+}

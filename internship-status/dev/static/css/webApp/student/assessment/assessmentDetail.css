@@ -1,0 +1,88 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.assessment_detail_panel {
+    overflow: hidden;
+}
+
+.assessment_content {
+    overflow: hidden;
+    border: 1px solid #666;
+    margin: 0.5rem;
+}
+
+.assessment_content .tutor_remark {
+    overflow: hidden;
+    border-bottom: 1px solid #666;
+}
+
+.assessment_content .tutor_remark .tutor_remark_title {
+    line-height: 1rem;
+    height: 1rem;
+    padding-left: 1px;
+}
+
+.assessment_content .tutor_remark .tutor_remark_content {
+    padding: 0.6rem 0 0.6rem 0.8rem;
+}
+
+.assessment_content .tutor_remark .tutor_sign {
+    line-height: 1.25rem;
+    height: 1.25rem;
+    margin-left: 3rem;
+}
+
+.assessment_content .tutor_remark .tutor_remark_time {
+    text-align: right;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.assessment_content .company_remark {
+    overflow: hidden;
+}
+
+.assessment_content .company_remark .company_remark_title {
+    line-height: 1rem;
+    height: 1rem;
+    padding-left: 1px;
+}
+
+.assessment_content .company_remark .company_remark_content {
+    padding: 0.6rem 0 0.6rem 0.8rem;
+}
+
+.assessment_content .company_remark .company_sign {
+    line-height: 1.25rem;
+    height: 1.25rem;
+    margin-left: 3rem;
+}
+
+.assessment_content .company_remark .company_remark_time {
+    text-align: right;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.assessment_content .teacher_sign {
+    text-align: left;
+    margin: 0.75rem 0 0.5rem 5rem;
+}
+
+.assessment_detail_panel .assessment_submit {
+    overflow: hidden;
+    margin: 1rem 0 1rem 0;
+}
+
+.assessment_detail_panel .assessment_submit .button {
+    width: 60%;
+    margin: auto;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+

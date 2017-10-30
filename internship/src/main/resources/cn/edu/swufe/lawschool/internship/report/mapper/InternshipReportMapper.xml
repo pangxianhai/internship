@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.report.mapper.InternshipReportMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.report.model.InternshipReport">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="subject" property="subject" jdbcType="VARCHAR"/>
+        <result column="student_id" property="studentId" jdbcType="BIGINT"/>
+        <result column="student_name" property="studentName" jdbcType="VARCHAR"/>
+        <result column="report_score" property="reportScore" jdbcType="INTEGER"/>
+        <result column="reviewer_id" property="reviewerId" jdbcType="BIGINT"/>
+        <result column="reviewer" property="reviewer" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="remark_time" property="remarkTime" jdbcType="BIGINT"/>
+        <result column="status" property="status"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        subject,student_id,student_name,report_score,reviewer_id,reviewer,remark,remark_time,status,
+        created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.report.model.InternshipReport">
+        select id ,
+        <include refid="Base_Column_List"/>
+        from internship_report
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="studentId != null">
+                and student_id = #{studentId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.report.model.InternshipReport">
+        insert into internship_report(<include refid="Base_Column_List"/>)
+        values(
+        #{subject,jdbcType=VARCHAR},
+        #{studentId,jdbcType=BIGINT},
+        #{studentName,jdbcType=VARCHAR},
+        #{reportScore,jdbcType=INTEGER},
+        #{reviewerId,jdbcType=BIGINT},
+        #{reviewer,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR},
+        #{remarkTime,jdbcType=BIGINT},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.user.model.UserInfo">
+        update internship_report
+        <set>
+            <if test="reviewerId != null">
+                reviewer_id = #{reviewerId,jdbcType=BIGINT},
+            </if>
+            <if test="reviewer != null">
+                reviewer = #{reviewer,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=BIGINT},
+            </if>
+            <if test="remarkTime != null">
+                remark_time = #{remarkTime,jdbcType=BIGINT},
+            </if>
+            <if test="reportScore != null">
+                report_score = #{reportScore,jdbcType=INTEGER},
+            </if>
+            <if test="updatedBy != null">
+                updated_by = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=BIGINT},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+</mapper>

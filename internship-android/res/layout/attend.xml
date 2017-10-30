@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#EEE">
+    <include layout="@layout/header"/>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFF"
+                android:layout_marginTop="20dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="今日签到："
+                    android:textColor="@color/color_main"
+                    android:gravity="center_vertical"
+                    android:textSize="18dp"
+                    android:paddingLeft="10dp"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="60dp"
+                          android:orientation="horizontal">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1">
+                    <Button
+                            android:id="@+id/attend_today_am_attend_button"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:text="上 午"
+                            android:background="@drawable/button_radius"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:layout_marginLeft="80dp"
+                    />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:gravity="right">
+                    <Button
+                            android:id="@+id/attend_today_pm_attend_button"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:text="下 午"
+                            android:background="@drawable/button_radius"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:layout_marginRight="80dp"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFF"
+                android:layout_marginTop="20dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="补充签到："
+                    android:textColor="@color/color_main"
+                    android:gravity="center_vertical"
+                    android:textSize="18dp"
+                    android:paddingLeft="10dp"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="补充日期："
+                        android:textColor="#000"
+                        android:gravity="center_vertical"
+                        android:textSize="12dp"
+                        android:paddingLeft="30dp"/>
+                <Button
+                        android:id="@+id/attend_supplement_attend_date_button"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/button_angle_bg"
+                        android:text="选择补签日期"
+                        android:textColor="#000"
+                />
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="70dp"
+                          android:paddingTop="10dp"
+                          android:orientation="horizontal">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1">
+                    <Button
+                            android:id="@+id/attend_supplement_am_attend_button"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:text="上 午"
+                            android:background="@drawable/button_radius"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:layout_marginLeft="80dp"
+                    />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:gravity="right">
+                    <Button
+                            android:id="@+id/attend_supplement_pm_attend_button"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:text="下 午"
+                            android:background="@drawable/button_radius"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:layout_marginRight="80dp"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

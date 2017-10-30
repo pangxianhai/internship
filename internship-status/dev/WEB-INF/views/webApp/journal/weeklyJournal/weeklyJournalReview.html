@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="考评周记"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/journal/weeklyJournal/weeklyJournalReview.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/redactor.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/journal/weeklyJournal/weeklyJournalDetail.css" rel="stylesheet"
+          type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="weekly_journal_detail_panel">
+    <div class="weekly_journal_head">
+        <table class="_head_table">
+            <tr>
+                <td class="_head_tips">学生：</td>
+                <td class="_head_content">${internshipNotes.studentName}</td>
+            </tr>
+            <tr>
+                <td class="_head_tips">实习时间：</td>
+                <td class="_head_content">${internshipNotes.beginDay?number_to_datetime?string("yyyy-MM-dd")}
+                    至
+                    ${internshipNotes.endDay?number_to_datetime?string("yyyy-MM-dd")}
+                </td>
+            </tr>
+            <tr>
+                <td class="_head_tips">指导老师：</td>
+                <td class="_head_content">${internshipNotes.tutorName}</td>
+            </tr>
+            <tr>
+                <td class="_head_tips">实习单位：</td>
+                <td class="_head_content">${internshipNotes.companyName}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="weekly_journal_detail">
+        <div class="weekly_journal_tips">实习内容：</div>
+        <div class="weekly_journal_content umeditor">${internshipNotes.notesContent}</div>
+        <div class="weekly_journal_tips">本周考勤：</div>
+        <table class="attend_table">
+            <thead>
+            <tr>
+                <th>日期</th>
+                <th>时段</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <#list attendRecords as attend>
+                <tr>
+                    <td>${attend.attendDay?number_to_datetime?string("yyyy-MM-dd")}</td>
+                    <td>${attend.timeInterval.desc}</td>
+                    <td>${attend.attendStatus.desc}</td>
+                </tr>
+            </#list>
+            </tbody>
+        </table>
+        <form id="weeklyReviewForm">
+            <input name="desId" value="${internshipNotes.desId}" type="hidden"/>
+            <div class="weekly_journal_tips">实习单位指导老师本周考评意见：</div>
+            <div id="tutorRemark" class="weekly_journal_content umeditor">
+                ${internshipNotes.tutorRemark!'还未考评'}
+            </div>
+            <div class="weekly_journal_tips">带队老师本周考评意见：</div>
+            <div id="teacherRemark" class="weekly_journal_content umeditor">
+                ${internshipNotes.teacherRemark!'还未考评'}
+            </div>
+        </form>
+    </div>
+    <div class="submit_weekly_journal_btn">
+        <a href="javascript:void(0)" class="button" id="reviewWeeklyJournalBtn">提交</a>
+    </div>
+</div>
+<input id="returnUrl" type="hidden" value="${returnUrl}"/>
+<input id="show_header_left" type="hidden" value="true"/>
+<input id="isTeacher" value="${logInfo.teacher}" type="hidden"/>
+<input id="isTutor" value="${logInfo.tutor}" type="hidden"/>
+</body>
+</html>

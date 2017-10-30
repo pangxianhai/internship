@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="系统登录"/>
+    <#include "/meta.html" />
+    <!--coolie-->
+    <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/login.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="login_content contentFull980">
+    <div class="left">
+        <img src="/static/images/login/login_main.png">
+    </div>
+    <div class="right">
+        <div class="login_panel">
+            <div class="login_error"></div>
+            <input id="err_msg" style="display: none" value="${error}"/>
+            <form id="login_form" action="/login/index.htm" method="post">
+                <input name="returnUrl" style="display: none" value="${returnUrl}"/>
+                <ul>
+                    <li>
+                        <input class="user_name" name="userName" type="text" placeholder="用户名/学号" value="${userName}"/>
+                    </li>
+                    <li>
+                        <input class="password" name="password" type="password" placeholder="密码" value="${password}"/>
+                    </li>
+                    <li>
+                        <a id="login_btn" class="btn243" href="javascript:void(0)">登录</a>
+                    </li>
+                </ul>
+                <div class="bottom">
+                    <a href="/company/list.htm">实习单位</a>
+                    <a href="/student/application-inter.htm">学生申请实习</a>
+                    <a href="/user/forget_password.htm">忘记密码</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+</body>
+</html>

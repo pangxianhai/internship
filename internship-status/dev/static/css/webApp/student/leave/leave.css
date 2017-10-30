@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+body {
+    background-color: #EEE;
+}
+
+.leave_panel {
+    overflow: hidden;
+}
+
+.leave_panel .go_leave_list {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0 1rem 0;
+    overflow: hidden;
+}
+
+.leave_panel .go_leave_list .button {
+    float: right;
+    width: 5rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    font-weight: 800;
+}
+
+.leave_panel .leave_div {
+    overflow: hidden;
+    background-color: #FFF;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.leave_panel .leave_div .title {
+    font-size: 15px;
+    margin-left: 12px;
+    font-weight: 800;
+    color: #3f55a0;
+    padding-top: 1rem;
+    text-align: left;
+}
+
+.leave_panel .leave_div .leave_time {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.leave_panel .leave_div .leave_time li {
+    float: left;
+    width: 30%;
+    text-align: center;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+}
+
+.leave_panel .leave_div .leave_time li input {
+    width: 88%;
+    height: 50%;
+}
+
+.leave_panel .leave_div .leave_time li select {
+    width: 90%;
+    height: 100%;
+}
+
+.leave_panel .leave_div .leave_time .leave_type_select{
+    text-align: left;
+}
+
+.leave_panel .leave_div .leave_btn {
+    width: 90%;
+    margin: 2rem auto 2rem auto;
+}
+
+.leave_panel .leave_div .leave_reason {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.leave_panel .leave_div .leave_reason li {
+    float: left;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+}
+.leave_panel .leave_div .leave_reason .l_title{
+    width: 30%;
+}
+
+.leave_panel .leave_div .leave_reason .l_content {
+    width: 60%;
+    text-align: left;
+}
+
+.leave_panel .leave_div .leave_reason .l_content input{
+    width: 90%;
+    height: 50%;
+}
+
+
+#leave_day_picker.active {
+    height: 285px;
+}
+
+#leave_day_picker {
+    height: 0;
+    position: fixed;
+    bottom: 0;
+    transition: height .5s;
+    background-color: #FFF;
+}

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.assessment-info {
+    margin-left: 10px;
+}
+
+.assessment-info .assessment-tips {
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.assessment-info .assessment-score-input {
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.assessment-info .assessment-info-btn {
+    margin-bottom: 12px;
+}
+

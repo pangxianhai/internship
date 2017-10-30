@@ -1,0 +1,87 @@
+@charset "UTF-8";
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.internship_report_panel {
+    overflow: hidden;
+}
+
+.internship_report_detail {
+    overflow: hidden;
+}
+
+.internship_report_detail .report_title {
+    margin-top: 0.4rem;
+    text-align: center;
+    font-size: 20px;
+}
+
+.internship_report_detail .report_subtitle {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 0.5rem;
+}
+
+.internship_report_detail .report_subject {
+    text-align: center;
+    font-size: 20px;
+    line-height: 4rem;
+}
+
+.internship_report_detail .report_student_info {
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.5rem;
+    margin: auto;
+    width: 14rem;
+    text-align: left;
+}
+
+.internship_report_detail .report_student_info ._tips {
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.internship_report_detail .report_review {
+    border: 1px solid #666;
+    overflow: hidden;
+    margin: 0 0.2rem 0.5rem 0.2rem;
+}
+
+.internship_report_detail .report_review .report_review_title {
+    margin: 0.5rem auto 0.5rem 0.3rem;
+}
+
+.internship_report_detail .report_review .report_review_bottom {
+    overflow: hidden;
+    margin: 0.8rem 0.5rem 0.3rem 0.3rem;
+}
+
+.internship_report_detail .report_review .report_review_bottom .teacher_name {
+    float: left;
+}
+
+.internship_report_detail .report_review .report_review_bottom .review_time {
+    float: right;
+}
+
+.internship_report_detail .report_submit {
+    overflow: hidden;
+    width: 100%;
+    margin: 1rem auto 1rem auto;
+}
+
+.internship_report_detail .report_submit .internship_report_btn {
+    width: 90%;
+    margin: auto;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 8px;
+    font-size: 18px;
+    letter-spacing: 8px;
+}
+
+.internship_report_detail input {
+    width: 5rem !important;
+}

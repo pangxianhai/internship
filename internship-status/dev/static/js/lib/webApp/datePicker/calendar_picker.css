@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+.ui_calendar_picker {
+    overflow: hidden;
+    width: 100%;
+}
+
+.ui_calendar_picker .ui_calendar_picker_head {
+    text-align: center;
+    font-size: 15px;
+    line-height: 2.5rem;
+    overflow: hidden;
+    width: 11.5rem;
+    margin: auto;
+}
+
+.ui_calendar_picker .ui_calendar_picker_head li {
+    float: left;
+}
+
+.ui_calendar_picker .ui_calendar_picker_head .ui_calendar_picker_head_move {
+    padding: 0 1rem 0 1rem;
+    overflow: hidden;
+}
+
+.ui_calendar_picker .ui_calendar_picker_head .ui_calendar_picker_head_move a {
+    color: #000;
+}
+
+.ui_calendar_picker .ui_calendar_picker_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ui_calendar_picker .ui_calendar_picker_table .ui_calendar_picker_table_head {
+    line-height: 2rem;
+    background-color: #F8F8F8;
+}
+
+.ui_calendar_picker .ui_calendar_picker_table .ui_calendar_picker_line {
+    border-top: 1px solid #CCCCCC;
+    line-height: 2rem;
+}
+
+.ui_calendar_picker .ui_calendar_picker_table .ui_calendar_picker_line .ui_calendar_current_day {
+    background-color: #0079FF;
+    color: #FFF;
+    border-radius: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    display: inline-block;
+}
+
+.ui_calendar_picker .ui_calendar_picker_table .ui_calendar_picker_line .ui_calendar_disable_day {
+    color: #ccc;
+}
+
+.ui_calendar_picker .ui_calendar_picker_table td, .ui_calendar_picker .ui_calendar_picker_table th {
+    width: 14.3%;
+    text-align: center;
+}
+
+

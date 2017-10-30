@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swufe.lawschool.internship.assessment.mapper.AssessmentMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.swufe.lawschool.internship.assessment.model.Assessment">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="student_id" property="studentId" jdbcType="BIGINT"/>
+        <result column="student_name" property="studentName" jdbcType="VARCHAR"/>
+        <result column="company_reviewer_id" property="companyReviewerId" jdbcType="BIGINT"/>
+        <result column="company_reviewer" property="companyReviewer" jdbcType="VARCHAR"/>
+        <result column="company_remark" property="companyRemark" jdbcType="VARCHAR"/>
+        <result column="company_remark_time" property="companyRemarkTime" jdbcType="BIGINT"/>
+        <result column="tutor_reviewer_id" property="tutorReviewerId" jdbcType="BIGINT"/>
+        <result column="tutor_reviewer" property="tutorReviewer" jdbcType="VARCHAR"/>
+        <result column="tutor_remark" property="tutorRemark" jdbcType="VARCHAR"/>
+        <result column="tutor_score" property="tutorScore" jdbcType="INTEGER"/>
+        <result column="tutor_remark_time" property="tutorRemarkTime" jdbcType="BIGINT"/>
+        <result column="teacher_confirm_user_id" property="teacherConfirmUserId" jdbcType="BIGINT"/>
+        <result column="teacher_confirm_user" property="teacherConfirmUser" jdbcType="VARCHAR"/>
+        <result column="teacher_confirm" property="teacherConfirm"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="teacher_confirm_time" property="teacherConfirmTime" jdbcType="BIGINT"/>
+        <result column="status" property="status"
+                typeHandler="cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="BIGINT"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        student_id,student_name,
+        company_reviewer_id,company_reviewer,company_remark,company_remark_time,
+        tutor_reviewer_id,tutor_reviewer,tutor_remark,tutor_score,tutor_remark_time,
+        teacher_confirm_user_id,teacher_confirm_user,teacher_confirm,teacher_confirm_time,
+        status,created_by,created_time,updated_by,updated_time
+    </sql>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="cn.edu.swufe.lawschool.internship.assessment.model.Assessment">
+        insert into internship_assessment(<include refid="Base_Column_List"/>)
+        values(
+        #{studentId,jdbcType=BIGINT},
+        #{studentName,jdbcType=VARCHAR},
+        #{companyReviewerId,jdbcType=BIGINT},
+        #{companyReviewer,jdbcType=VARCHAR},
+        #{companyRemark,jdbcType=VARCHAR},
+        #{companyRemarkTime,jdbcType=BIGINT},
+        #{tutorReviewerId,jdbcType=BIGINT},
+        #{tutorReviewer,jdbcType=VARCHAR},
+        #{tutorRemark,jdbcType=VARCHAR},
+        #{tutorScore,jdbcType=INTEGER},
+        #{tutorRemarkTime,jdbcType=BIGINT},
+        #{teacherConfirmUserId,jdbcType=BIGINT},
+        #{teacherConfirmUser,jdbcType=VARCHAR},
+        #{teacherConfirm,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{teacherConfirmTime,jdbcType=BIGINT},
+        #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+        #{createdBy,jdbcType=VARCHAR},
+        #{createdTime,jdbcType=BIGINT},
+        #{updatedBy,jdbcType=VARCHAR},
+        #{updatedTime,jdbcType=BIGINT}
+        )
+    </insert>
+    <update id="update" parameterType="cn.edu.swufe.lawschool.internship.assessment.model.Assessment">
+        update internship_assessment
+        <set>
+            <if test="companyReviewerId != null">
+                company_reviewer_id = #{companyReviewerId,jdbcType=BIGINT},
+            </if>
+            <if test="companyReviewer != null">
+                company_reviewer = #{companyReviewer,jdbcType=VARCHAR},
+            </if>
+            <if test="companyRemark != null">
+                company_remark = #{companyRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="companyRemarkTime != null">
+                company_remark_time = #{companyRemarkTime,jdbcType=BIGINT},
+            </if>
+            <if test="tutorReviewerId != null">
+                tutor_reviewer_id = #{tutorReviewerId,jdbcType=BIGINT},
+            </if>
+            <if test="tutorReviewer != null">
+                tutor_reviewer = #{tutorReviewer,jdbcType=VARCHAR},
+            </if>
+            <if test="tutorRemark != null">
+                tutor_remark = #{tutorRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="tutorScore != null">
+                tutor_score = #{tutorScore,jdbcType=INTEGER},
+            </if>
+            <if test="tutorRemarkTime != null">
+                tutor_remark_time = #{tutorRemarkTime,jdbcType=BIGINT},
+            </if>
+            <if test="teacherConfirmUserId != null">
+                teacher_confirm_user_id = #{teacherConfirmUserId,jdbcType=BIGINT},
+            </if>
+            <if test="teacherConfirmUser != null">
+                teacher_confirm_user = #{teacherConfirmUser,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherConfirm != null">
+                teacher_confirm =
+                #{teacherConfirm,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+            <if test="teacherConfirmTime != null">
+                teacher_confirm_time = #{teacherConfirmTime,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,typeHandler=cn.edu.swufe.lawschool.mybatis.MyBaseTypeHandler},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="studentId != null">
+                and student_id = #{studentId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+    <select id="select" resultMap="BaseResultMap"
+            parameterType="cn.edu.swufe.lawschool.internship.assessment.model.Assessment">
+        select id ,
+        <include refid="Base_Column_List"/>
+        from internship_assessment
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="studentId != null">
+                and student_id = #{studentId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+</mapper>

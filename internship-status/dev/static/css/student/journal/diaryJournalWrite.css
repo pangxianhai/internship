@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.add-diary-journal-panel {
+    margin-left: 10px;
+}
+
+.add-diary-journal-panel .journal-title {
+    overflow: hidden;
+
+}
+
+.add-diary-journal-panel .journal-title .journal-title-table td {
+    height: 25px;
+}
+
+.add-diary-journal-panel .journal-title .journal-title-table .tips {
+    text-align: right;
+}
+
+.add-diary-journal-panel .journal-title .journal-title-table ._content {
+    padding-right: 20px;
+}
+
+.add-diary-journal-panel .journal-title li {
+    margin-top: 10px;
+    height: 21px;
+    line-height: 21px;
+}
+
+.add-diary-journal-panel .journal-tips {
+    line-height: 28px;
+    margin-left: 3px;
+}
+
+.add-diary-journal-panel .add-diary-journal-btn {
+    margin: 15px auto 8px 225px;
+    width: 243px;
+}

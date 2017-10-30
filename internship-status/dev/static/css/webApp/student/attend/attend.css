@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+body {
+    background-color: #EEE;
+}
+
+.attend_panel {
+    /*margin-top: 3.2rem;*/
+}
+
+.attend_panel .go_attend_list {
+    overflow: hidden;
+    background-color: #FFF;
+    padding: 1rem 0 1rem 0;
+}
+
+.attend_panel .go_attend_list a {
+    width: 5rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 5px;
+    float: right;
+    margin-right: 0.5rem;
+    font-weight: 800;
+}
+
+.attend_panel .attend_div {
+    margin-top: 1rem;
+    padding: 1rem 0 2rem 0;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.attend_panel .attend_div .title {
+    font-size: 15px;
+    margin-left: 12px;
+    font-weight: 800;
+    color: #3f55a0;
+}
+
+.attend_panel .attend_div .today_attend_ul {
+    margin-top: 1rem;
+}
+
+.attend_panel .attend_div .attend_ul {
+    overflow: hidden;
+}
+
+.attend_panel .attend_div .attend_ul li.left {
+    float: left;
+    margin-left: 4rem;
+}
+
+.attend_panel .attend_div .attend_ul li.right {
+    float: right;
+    margin-right: 4rem;
+}
+
+.attend_panel .attend_div .attend_btn {
+    font-size: 15px;
+    width: 5rem;
+    height: 2.5rem;
+}
+
+.attend_panel .attend_day_ul {
+    overflow: hidden;
+    margin-left: 2rem;
+}
+
+.attend_panel .attend_day_ul li {
+    float: left;
+    line-height: 4rem;
+}
+
+.attend_panel .attend_day_ul .button{
+    height: 2rem;
+    font-size: 16px;
+}
+
+#attend_day_picker.active {
+    height: 285px;
+}
+
+#attend_day_picker {
+    height: 0px;
+    position: fixed;
+    bottom: 0;
+    transition: height .5s;
+    background-color: #FFF;
+    overflow: hidden;
+}

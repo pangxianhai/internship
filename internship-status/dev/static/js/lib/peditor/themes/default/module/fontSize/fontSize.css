@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.ui_ed_toolbar_font_size {
+    border: 1px solid #bbb;
+    width: 60px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+}

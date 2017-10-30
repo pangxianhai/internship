@@ -1,0 +1,85 @@
+@charset "UTF-8";
+.assessment-info {
+    overflow: hidden;
+}
+
+.assessment-info .assessment-title {
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.assessment-info .print-div {
+    float: right;
+    margin-top: -38px;
+    margin-right: 29px;
+}
+
+.assessment-info .assessment-content {
+    overflow: hidden;
+    border: 1px solid #666;
+}
+
+.assessment-info .assessment-content .tutor-remark .tutor-remark-title {
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.assessment-info .assessment-content .tutor-remark .tutor-remark-content {
+    padding: 10px 0 10px 12px;
+}
+
+.assessment-info .assessment-content .tutor-remark .tutor-sign {
+    line-height: 20px;
+    height: 20px;
+    margin-left: 46px;
+}
+
+.assessment-info .assessment-content .tutor-remark .tutor-remark-time {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.assessment-info .assessment-content .company-remark {
+    border-top: 1px solid #666;
+    margin-top: 8px;
+}
+
+.assessment-info .assessment-content .company-remark .company-remark-title {
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.assessment-info .assessment-content .company-remark .company-remark-content {
+    padding: 10px 0 10px 12px;
+}
+
+.assessment-info .assessment-content .company-remark .company-sign {
+    margin-left: 66px;
+    line-height: 20px;
+    height: 20px;
+}
+
+.assessment-info .assessment-content .company-remark .company-remark-time {
+    text-align: right;
+    padding-right: 30px;
+    padding-bottom: 8px;
+}
+
+.assessment-info .teacher-sign {
+    text-align: left;
+    margin-left: 86px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.assessment-btn {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.assessment-btn .btn243 {
+    letter-spacing: 0px;
+}

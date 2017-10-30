@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords" content="学生写周记-实习管理系统-西南财经大学法学院-西南财经大学"/>
+    <meta name="description" content="学生写周记"/>
+    <title>学生写周记-西南财经大学法学院实习管理系统</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <!--coolie-->
+    <link href="/static/js/lib/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/student/journal/weeklyJournalWrite.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/student/journal/weeklyJournalWrite.js">
+    </script>
+</head>
+<body>
+<#include "/header.html" />
+<div class="content">
+    <#include "/menu.html" />
+    <div class="right_content">
+        <div class="crumb">
+            <span class="">${menuTitle} <a href="/student/weeklyJournal/list.htm">周记列表</a> &gt; 写周记</span>
+            <hr/>
+        </div>
+        <div class="weekly-journal-panel">
+            <form id="weekly-journal-write-form">
+                <div class="journal-title">
+                    <table class="journal-title-table">
+                        <tr>
+                            <td class="tips">学生：</td>
+                            <td class="_content">${student.name}</td>
+                            <td class="tips">实习时间：</td>
+                            <td class="_content">
+                                <input name="beginDay" readonly="readonly" value="${beginDay!''}"/>
+                                至
+                                <input name="endDay" readonly="readonly" value="${endDay!''}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tips">指导老师：</td>
+                            <td class="_content">${student.tutorName}</td>
+                            <td class="tips">实习单位：</td>
+                            <td class="_content">${student.companyName}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="journal-tips">本周实习内容：</div>
+                <div class="journal-content umeditor" id="journal-content" name="journalContent"></div>
+                <div class="weekly-journal-write-btn-div">
+                    <a id="weekly-journal-write-btn-a" href="javascript:void(0)" class="btn243">提交</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<#include "/footer.html" />
+<input id="menu_id" value="weekly" style="display: none"/>
+</body>
+</html>
