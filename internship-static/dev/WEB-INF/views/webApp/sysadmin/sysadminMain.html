@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="首页"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/sysadmin/sysadminMain.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/sysadmin/sysadminMain.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<#include "/webApp/header.html" />
+<div class="sysadmin_main_panel">
+    <ul class="sysadmin_main_list">
+        <li class="_node _last">
+            <a href="/webApp/user/list.htm?returnUrl=${locationURL}">
+                用户管理<i class="_icon">&gt;</i>
+            </a>
+        </li>
+    </ul>
+    <ul class="sysadmin_main_list">
+        <li class="_node">
+            <a href="/webApp/company/list.htm?returnUrl=${locationURL}">
+                实习单位管理<i class="_icon">&gt;</i>
+            </a>
+        </li>
+        <li class="_node _last">
+            <a href="/webApp/tutor/list.htm?returnUrl=${locationURL}">
+                单位导师管理<i class="_icon">&gt;</i>
+            </a>
+        </li>
+    </ul>
+    <ul class="sysadmin_main_list">
+        <li class="_node">
+            <a href="/webApp/student/attend/list.htm?returnUrl=${locationURL}">
+                学校组织管理<i class="_icon">&gt;</i>
+            </a>
+        </li>
+        <li class="_node _last">
+            <a href="/webApp/teacher/list.htm?returnUrl=${locationURL}">
+                带队老师管理<i class="_icon">&gt;</i>
+            </a>
+        </li>
+    </ul>
+</div>
+<#include "/webApp/footer.html" />
+<input id="show_header_left" type="hidden" value="false"/>
+<input id="footerMenuId" type="hidden" value="home"/>
+</body>
+</html>

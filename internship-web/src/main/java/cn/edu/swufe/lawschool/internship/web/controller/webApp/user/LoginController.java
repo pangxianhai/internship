@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * <p>Title:       手机登陆页面</p>
  * <p>Description: 手机登陆页面</p>
  * <p>Copyright:   Copyright (c) 2016</p>
+ *
  * @author 庞先海 pangxianhai@besttone.com.cn
  * @version 1.0
  */
@@ -43,7 +44,11 @@ public class LoginController {
         if (userInfo != null) {
             return "redirect:" + ServletUtil.redirectWhenLogin(userInfo, returnUrl);
         } else {
-            return "webApp/user/login";
+            if (ServletUtil.isMobile()) {
+                return "webApp/user/login";
+            } else {
+                return "redirect:/login/index.htm";
+            }
         }
     }
 

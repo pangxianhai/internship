@@ -35,6 +35,7 @@ import java.util.List;
  * <p>Title:       webApp student controller</p>
  * <p>Description: webApp student controller</p>
  * <p>Copyright:   Copyright (c) 2016</p>
+ *
  * @author 庞先海 pangxianhai@besttone.com.cn
  * @version 1.0
  */
@@ -62,11 +63,12 @@ public class StudentController {
 
     /**
      * 学生个人中心
+     *
      * @return
      */
     @RequestMapping(value = "/main.htm", method = RequestMethod.GET)
-    @LoginAccessPermission({ UserType.STUDENT_CODE })
-    public String studentMain (ModelMap modelMap) {
+    @LoginAccessPermission({UserType.STUDENT_CODE})
+    public String studentMain(ModelMap modelMap) {
         Student student = studentService.getStudentByUserId(loginService.getLoginUserInfo().getId());
         if (student.getCompanyId() != null) {
             student.setCompany(companyService.getCompanyById(student.getCompanyId()));
@@ -83,7 +85,7 @@ public class StudentController {
 
     @RequestMapping(value = "/studentInfo.htm", method = RequestMethod.GET)
     @LoginAccessPermission(UserType.STUDENT_CODE)
-    public String studentInfo (ModelMap modelMap) {
+    public String studentInfo(ModelMap modelMap) {
         Student student = loginService.getStudentInfo();
         if (student.getCompanyId() != null) {
             student.setCompany(companyService.getCompanyById(student.getCompanyId()));
@@ -103,12 +105,12 @@ public class StudentController {
 
     @RequestMapping(value = "/detail/{studentDesId}.htm", method = RequestMethod.GET)
     @LoginAccessPermission
-    public String studentDetail (ModelMap modelMap, @PathVariable String studentDesId, String returnUrl) {
+    public String studentDetail(ModelMap modelMap, @PathVariable String studentDesId, String returnUrl) {
         UserInfo loginInfo = loginService.getLoginUserInfo();
         Student student = studentService.getStudentByDesId(studentDesId);
         authorizationService.checkStudentAuthorization(loginInfo, student);
         OperateAuthorization operateAuthorization = authorizationService.getOperateAuthorization(loginInfo,
-                                                                                                 student);
+                student);
         modelMap.put("sexes", SexType.getValues());
         modelMap.put("student", student);
         modelMap.put("companies", companyService.getCompany(new Company(), new Page()));
@@ -122,13 +124,16 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/list.htm", method = RequestMethod.GET)
-    @LoginAccessPermission({ UserType.TEACHER_CODE, UserType.COMPANY_TUTOR_CODE, UserType.SYS_ADMIN_CODE })
-    public String getStudentList (ModelMap modelMap, Student student, String returnUrl) {
+    @LoginAccessPermission({UserType.TEACHER_CODE, UserType.COMPANY_TUTOR_CODE, UserType.SYS_ADMIN_CODE})
+    public String getStudentList(ModelMap modelMap, Student student, String returnUrl, String showHeaderLeft) {
         UserInfo loginInfo = loginService.getLoginUserInfo();
         OperateAuthorization operateAuthorization = authorizationService.getOperateAuthorization(loginInfo,
-                                                                                                 null);
+                null);
         if (!(loginInfo.isStudent() || loginInfo.isLeader() || loginInfo.isSysadmin())) {
             throw new InternshipException(ErrorType.NO_ACCESS);
+        }
+        if (StringUtil.isEmpty(showHeaderLeft)) {
+            showHeaderLeft = "true";
         }
         modelMap.put("canChangeCompany", operateAuthorization.isCanChangeCompany());
         modelMap.put("canChangeTutor", operateAuthorization.isCanChangeTutor());
@@ -136,16 +141,18 @@ public class StudentController {
         modelMap.put("canDeleteStudent", operateAuthorization.isCanDeleteStudent());
         modelMap.put("student", student);
         modelMap.put("returnUrl", ServletUtil.redirectWhenLogin(loginInfo, returnUrl));
+        modelMap.put("showHeaderLeft", showHeaderLeft);
         return "webApp/student/studentList";
     }
 
     /**
      * 申请实习
+     *
      * @param modelMap
      * @return
      */
     @RequestMapping(value = "/application-inter.htm", method = RequestMethod.GET)
-    public String applyForInternship (ModelMap modelMap, String returnUrl) {
+    public String applyForInternship(ModelMap modelMap, String returnUrl) {
         UserInfo loginInfo = loginService.getLoginUserInfo();
         List<Company> companyList = companyService.getCompany(new Company(), new Page());
         modelMap.put("sexes", SexType.getValues());

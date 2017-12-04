@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * <p>Title:       登录controller</p>
  * <p>Description: 登录想关的页面和接口</p>
  * <p>Copyright:   Copyright (c) 2015</p>
+ *
  * @author 庞先海
  * @version 1.0
  */
@@ -42,7 +43,11 @@ public class LoginController {
         if (userInfo != null) {
             return "redirect:" + ServletUtil.redirectWhenLogin(userInfo, returnUrl);
         } else {
-            return "login";
+            if (ServletUtil.isMobile()) {
+                return "redirect:/webApp/login/index.htm";
+            } else {
+                return "login";
+            }
         }
     }
 

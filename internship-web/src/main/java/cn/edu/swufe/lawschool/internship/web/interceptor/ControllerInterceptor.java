@@ -50,6 +50,7 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     private StudentService studentService;
 
+    @Override
     public boolean preHandle (HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         ServletContext.init(request, response);

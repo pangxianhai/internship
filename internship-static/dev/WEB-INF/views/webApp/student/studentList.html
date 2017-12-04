@@ -19,11 +19,15 @@
     <ul class="user_list" id="studentList">
     </ul>
 </div>
-<input id="show_header_left" type="hidden" value="true"/>
+<#if showHeaderLeft == "false">
+    <#include "/webApp/footer.html" />
+</#if>
+<input id="show_header_left" type="hidden" value="${showHeaderLeft}"/>
 <input id="returnUrl" type="hidden" value="${returnUrl}"/>
 <input id="canChangeCompany" value="${canChangeCompany}" type="hidden"/>
 <input id="canChangeTutor" value="${canChangeTutor}" type="hidden"/>
 <input id="canChangeTeacher" value="${canChangeTeacher}" type="hidden"/>
 <input id="canDeleteStudent" value="${canDeleteStudent}" type="hidden"/>
+<input id="footerMenuId" type="hidden" value="student"/>
 </body>
 </html>

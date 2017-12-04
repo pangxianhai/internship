@@ -1,0 +1,26 @@
+header .header ul li.center {
+    letter-spacing: 0px !important;
+}
+
+.user_list_panel .user_list .user_node {
+    height: 3.5rem;
+}
+
+.user_list_panel .user_list .user_node .operate {
+    height: 3.5rem;
+}
+
+.user_list_panel .user_list .user_node .user_show {
+    height: 3rem;
+}
+
+.user_list_panel .user_list .user_node .operate .operate_list .assign {
+    width: 3rem;
+    line-height: 2rem;
+    padding-top: 0.7rem;
+}
+
+.user_list_panel .user_list .user_node .operate .operate_list li.reset_password {
+    background-color: #3f55a0;
+}
+

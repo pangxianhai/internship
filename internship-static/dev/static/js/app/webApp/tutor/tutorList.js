@@ -21,13 +21,13 @@ define(function (require, exports, module) {
                 if (this.data.action == 'addStudent' || this.data.isSysadmin || this.data.isLeader) {
                     if (this.data.action == 'addStudent') {
                         hasOperate = true;
-                        operateHtml.push('<li class="_tutor">');
+                        operateHtml.push('<li class="_tutor" item="assign">');
                         operateHtml.push('<div class="_assign">分配实习导师</div>');
                         operateHtml.push('</li>');
                     } else if (this.data.isSysadmin) {
                         hasOperate = true;
                         if (!tutor.isLeader) {
-                            operateHtml.push('<li class="_tutor">');
+                            operateHtml.push('<li class="_tutor" item="setLeader">');
                             operateHtml.push('<div class="_assign">设为负责人</div>');
                             operateHtml.push('</li>');
                         }
@@ -83,7 +83,12 @@ define(function (require, exports, module) {
                         operate_node.css('visibility', 'visible');
                     },
                     move_event_callback: function (e) {
-
+                        var range = e.range;
+                        var transX = parseFloat(document.defaultView.getComputedStyle($this.get(0)).transform.substring(7).split(",")[4]);
+                        var rX = range.x1 - range.x2;
+                        if (transX <= 0 && rX < 0) {
+                            $this.css({'transform': 'translate(0px, 0px) scale(1) translateZ(0px)'});
+                        }
                     },
                     end_callback: function (e) {
                         var range = e.range;
@@ -108,7 +113,7 @@ define(function (require, exports, module) {
         },
 
         bindAssignTutorAction: function () {
-            var assignTutorNode = $('#tutorList .user_node .operate ._tutor');
+            var assignTutorNode = $('#tutorList .user_node .operate [item="assign"]');
             assignTutorNode.off('click');
             assignTutorNode.on('click', function (e) {
                 e.stopPropagation();
@@ -131,6 +136,66 @@ define(function (require, exports, module) {
                                 }
                                 setTimeout(function () {
                                     window.location.href = $('#returnUrl').val();
+                                }, 2000);
+                            } else {
+                                dialog.push_error_message(result.message);
+                            }
+                        }
+                    });
+                });
+            });
+        },
+
+        bindSetTutorLeaderAction: function () {
+            var assignTutorNode = $('#tutorList .user_node .operate [item="setLeader"]');
+            assignTutorNode.off('click');
+            assignTutorNode.on('click', function (e) {
+                e.stopPropagation();
+                var thisTutor = $(this).parents('.user_node');
+                var tutorDesId = thisTutor.attr('tutorDesId');
+                dialog.yes_no('你确定将该导师设为负责人吗?', function () {
+                    $.ajax({
+                        url: '/tutor/setLeader.json',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            tutorDesId: tutorDesId
+                        },
+                        success: function (result) {
+                            if (result.ret) {
+                                dialog.push_ok_message('操作成功');
+                                setTimeout(function () {
+                                    window.location.reload(true);
+                                }, 2000);
+                            } else {
+                                dialog.push_error_message(result.message);
+                            }
+                        }
+                    });
+                });
+            });
+        },
+
+        bindDeleteTutorAction: function () {
+            var assignTutorNode = $('#tutorList .user_node .operate ._delete');
+            assignTutorNode.off('click');
+            assignTutorNode.on('click', function (e) {
+                e.stopPropagation();
+                var thisTutor = $(this).parents('.user_node');
+                var tutorDesId = thisTutor.attr('tutorDesId');
+                dialog.yes_no('你确定删除该导师吗?', function () {
+                    $.ajax({
+                        url: '/tutor/delete.json',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            destId: tutorDesId
+                        },
+                        success: function (result) {
+                            if (result.ret) {
+                                dialog.push_ok_message('操作成功');
+                                setTimeout(function () {
+                                    window.location.reload(true);
                                 }, 2000);
                             } else {
                                 dialog.push_error_message(result.message);
@@ -167,12 +232,16 @@ define(function (require, exports, module) {
                         tutorList.bindTutorInfoScrollAction();
                         tutorList.bindToTutorDetailAction();
                         tutorList.bindAssignTutorAction();
+                        tutorList.bindSetTutorLeaderAction();
+                        tutorList.bindDeleteTutorAction();
                     } else {
                         dialog.push_error_message(result.message);
                     }
                 }
             });
-        },
+        }
+
+        ,
 
         init: function () {
             this.data.isSysadmin = $('#isSysadmin').val() == 'true';

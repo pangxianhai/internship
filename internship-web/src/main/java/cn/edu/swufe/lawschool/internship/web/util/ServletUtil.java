@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
  * <p>Title:       Servlet 工具类</p>
  * <p>Description: Servlet 工具类</p>
  * <p>Copyright:   Copyright (c) 2015</p>
+ *
  * @author
  * @version 1.0
  */
@@ -24,22 +25,24 @@ public class ServletUtil {
 
     /**
      * 判断当前请求是不是请求json参数
+     *
      * @param request
      * @return true/false
      */
-    public static boolean isJsonLink (HttpServletRequest request) {
+    public static boolean isJsonLink(HttpServletRequest request) {
         return request.getRequestURI().endsWith(".json");
     }
 
-    public static boolean isUploadImageLink (HttpServletRequest request) {
+    public static boolean isUploadImageLink(HttpServletRequest request) {
         return request.getRequestURI().equals("/image/upload.json");
     }
 
     /**
      * 生成支持callback的数据格式
+     *
      * @return
      */
-    public static String buildPrintJsonData (HttpServletRequest request, Object result) {
+    public static String buildPrintJsonData(HttpServletRequest request, Object result) {
         String callback = request.getParameter("callback");
         SerializerFeature feature = SerializerFeature.DisableCircularReferenceDetect;
         String text = JSON.toJSONString(result, feature);
@@ -50,13 +53,13 @@ public class ServletUtil {
         }
     }
 
-    public static boolean isMobile () {
+    public static boolean isMobile() {
         String userAgent = ServletContext.getRequest().getHeader("USER-AGENT").toLowerCase();
         if (null == userAgent) {
             userAgent = "";
         }
         //先检测几个特定的pc来源
-        String[] desktopSysAgents = new String[] { "Windows NT", "compatible; MSIE 9.0;", "Macintosh" };
+        String[] desktopSysAgents = new String[]{"Windows NT", "compatible; MSIE 9.0;", "Macintosh"};
         for (String d : desktopSysAgents) {
             if (userAgent.toLowerCase().contains(d.toLowerCase())) {
                 return false;
@@ -80,7 +83,7 @@ public class ServletUtil {
         }
     }
 
-    public static String redirectWhenLogin (UserInfo userInfo, String returnUrl) {
+    public static String redirectWhenLogin(UserInfo userInfo, String returnUrl) {
         if (StringUtil.isNotEmpty(returnUrl)) {
             return returnUrl;
         } else if (userInfo == null) {
@@ -100,7 +103,7 @@ public class ServletUtil {
                 }
             } else if (userInfo.isSysadmin()) {
                 if (isMobile()) {
-                    return "/webApp/user/list.htm";
+                    return "/webApp/sysadmin/main.htm";
                 } else {
                     return "/user/list.htm";
                 }

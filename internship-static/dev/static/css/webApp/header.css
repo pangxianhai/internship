@@ -84,6 +84,10 @@ footer .footer_menu.teacher ._node {
     width: 20%;
 }
 
+footer .footer_menu.sysadmin ._node {
+    width: 25%;
+}
+
 footer .footer_menu ._node i {
     display: block;
     width: 1.2rem;

@@ -35,10 +35,18 @@ function build_static()
     then
         cp -r ./dev/* ~/www/internship-web/webapps/ROOT/
         cp -r ./dev/* ~/code/java/internship/internship-web/src/main/webapp/
-        rm ~/code/java/internship/internship-web/src/main/webapp/coolie.config.js
-        rm ~/code/java/internship/internship-web/src/main/webapp/coolie-map.json 
-        rm ~/code/java/internship/internship-web/src/main/webapp/coolie.js
-        rm ~/code/java/internship/internship-web/src/main/webapp/intership-static.iml
+	if [ -f ~/code/java/internship/internship-web/src/main/webapp/coolie.config.js ] ;then
+            rm ~/code/java/internship/internship-web/src/main/webapp/coolie.config.js
+	fi
+	if [ -f ~/code/java/internship/internship-web/src/main/webapp/coolie-map.json ];then
+            rm ~/code/java/internship/internship-web/src/main/webapp/coolie-map.json 
+	fi
+	if [ -f ~/code/java/internship/internship-web/src/main/webapp/coolie.js ];then
+            rm ~/code/java/internship/internship-web/src/main/webapp/coolie.js
+	fi
+	if [ -f ~/code/java/internship/internship-web/src/main/webapp/intership-static.iml ];then
+            rm ~/code/java/internship/internship-web/src/main/webapp/intership-static.iml
+	fi
     else
 	cd dev/
 	~/node_modules/coolie/bin/coolie  build

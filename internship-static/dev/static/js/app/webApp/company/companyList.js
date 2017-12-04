@@ -28,7 +28,12 @@ define(function (require, exports, module) {
                         operate_node.css('visibility', 'visible');
                     },
                     move_event_callback: function (e) {
-
+                        var range = e.range;
+                        var transX = parseFloat(document.defaultView.getComputedStyle($this.get(0)).transform.substring(7).split(",")[4]);
+                        var rX = range.x1 - range.x2;
+                        if (transX <= 0 && rX < 0) {
+                            $this.css({'transform': 'translate(0px, 0px) scale(1) translateZ(0px)'});
+                        }
                     },
                     end_callback: function (e) {
                         var range = e.range;

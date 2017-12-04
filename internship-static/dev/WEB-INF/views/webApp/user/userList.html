@@ -2,28 +2,23 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <#assign title="导师列表"/>
+    <#assign title="用户列表"/>
     <#include "/webApp/meta.html" />
     <script coolie src="/static/js/lib/coolie.min.js"
             data-config="/static/js/coolie-config.js"
-            data-main="app/webApp/tutor/tutorList.js">
+            data-main="app/webApp/user/userList.js">
     </script>
     <!--coolie-->
     <link href="/static/css/webApp/user/userList.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/webApp/tutor/tutorList.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/user/userListInfo.css" rel="stylesheet" type="text/css"/>
     <!--/coolie-->
 </head>
 <body>
 <#include "/webApp/header.html" />
-<div class="tutor_list_panel">
-    <ul class="user_list" id="tutorList">
+<div class="user_list_panel">
+    <ul class="user_list" id="userList">
     </ul>
 </div>
-<input id="isSysadmin" value="${logInfo.sysadmin}" type="hidden"/>
-<input id="isLeader" value="${isLeader}" type="hidden"/>
-<input id="action" value="${action}" type="hidden"/>
-<input id="studentDestId" type="hidden" value="${student.desId}"/>
-<input id="studentName" type="hidden" value="${student.name}"/>
 <input id="returnUrl" type="hidden" value="${returnUrl}"/>
 <input id="show_header_left" type="hidden" value="true"/>
 </body>

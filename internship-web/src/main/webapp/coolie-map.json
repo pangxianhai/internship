@@ -2265,7 +2265,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/company/companyList.js",
-        "dest": "/static/js/97493420b80ef46a.js",
+        "dest": "/static/js/ca33f3d7ed5d40c6.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/app/webApp/header.js",
@@ -2481,7 +2481,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/forum/bulletin/myBulletinList.js",
-        "dest": "/static/js/e5f8de518aed59f0.js",
+        "dest": "/static/js/6dbe657eae1ff173.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/app/webApp/header.js",
@@ -2513,7 +2513,7 @@
     "js": [],
     "css": [
       {
-        "dest": "/static/css/0fa334b6faf672ac.css",
+        "dest": "/static/css/64209bbd15a5cec2.css",
         "deps": [
           {
             "src": "../dev/static/css/webApp/common.css",
@@ -2579,7 +2579,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/journal/diaryJournal/diaryJournalList.js",
-        "dest": "/static/js/5df6a1e5ffb78459.js",
+        "dest": "/static/js/9be07b89c2b8f25b.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/lib/date.js",
@@ -3149,7 +3149,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/student/attend/attendList.js",
-        "dest": "/static/js/3896e7ea0e270fa8.js",
+        "dest": "/static/js/4822baced1dc6f7c.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/lib/date.js",
@@ -3481,7 +3481,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/student/leave/leaveList.js",
-        "dest": "/static/js/28a5f8c10881a33a.js",
+        "dest": "/static/js/98c14618ee354dfc.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/lib/date.js",
@@ -3618,7 +3618,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/student/studentList.js",
-        "dest": "/static/js/34ce4be70706d0ff.js",
+        "dest": "/static/js/cb3f14b71b107acc.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/lib/webApp/scroll.js",
@@ -3686,6 +3686,39 @@
         "deps": [
           {
             "src": "../dev/static/css/webApp/student/studentMain.css",
+            "res": []
+          }
+        ]
+      }
+    ],
+    "res": []
+  },
+  "/WEB-INF/views/webApp/sysadmin/sysadminMain.html": {
+    "main": [
+      {
+        "src": "../dev/static/js/app/webApp/sysadmin/sysadminMain.js",
+        "dest": "/static/js/16b1bacbdc8baaa9.js",
+        "deps": [
+          "../dev/static/js/lib/webApp/zepto.js",
+          "../dev/static/js/app/webApp/header.js",
+          "../dev/static/js/lib/strings.js"
+        ]
+      }
+    ],
+    "js": [
+      {
+        "dest": "/static/js/e573cc8e6fa2c94a.js",
+        "deps": [
+          "../dev/static/js/lib/coolie.min.js"
+        ]
+      }
+    ],
+    "css": [
+      {
+        "dest": "/static/css/7e38a44878a57579.css",
+        "deps": [
+          {
+            "src": "../dev/static/css/webApp/sysadmin/sysadminMain.css",
             "res": []
           }
         ]
@@ -3771,7 +3804,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/teacher/teacherList.js",
-        "dest": "/static/js/ccbbec15a4d9d1de.js",
+        "dest": "/static/js/4534cc3158e5cc27.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/app/webApp/header.js",
@@ -3931,7 +3964,7 @@
     "main": [
       {
         "src": "../dev/static/js/app/webApp/tutor/tutorList.js",
-        "dest": "/static/js/d3a6dbe5c3051cbb.js",
+        "dest": "/static/js/3129bab3804b3664.js",
         "deps": [
           "../dev/static/js/lib/webApp/zepto.js",
           "../dev/static/js/lib/webApp/dialog.js",
@@ -4045,6 +4078,52 @@
               "../dev/static/images/login/user_name_land.png",
               "../dev/static/images/login/password_land.png"
             ]
+          }
+        ]
+      }
+    ],
+    "res": []
+  },
+  "/WEB-INF/views/webApp/user/userList.html": {
+    "main": [
+      {
+        "src": "../dev/static/js/app/webApp/user/userList.js",
+        "dest": "/static/js/b4fef0f99bb77689.js",
+        "deps": [
+          "../dev/static/js/lib/webApp/zepto.js",
+          "../dev/static/js/lib/webApp/dialog.js",
+          "../dev/static/js/lib/webApp/zepto.alert.js",
+          "../dev/static/css/webApp/zepto.alert.css",
+          "../dev/static/js/lib/strings.js",
+          "../dev/static/js/lib/webApp/page/page.js",
+          "../dev/static/js/lib/webApp/scroll.js",
+          "../dev/static/js/lib/webApp/touch.js",
+          "../dev/static/js/lib/webApp/page/page.css",
+          "../dev/static/js/app/webApp/header.js",
+          "../dev/static/images/zepto/alert-loading.gif",
+          "../dev/static/images/zepto/alert-icons.png"
+        ]
+      }
+    ],
+    "js": [
+      {
+        "dest": "/static/js/e573cc8e6fa2c94a.js",
+        "deps": [
+          "../dev/static/js/lib/coolie.min.js"
+        ]
+      }
+    ],
+    "css": [
+      {
+        "dest": "/static/css/79da625976946ea1.css",
+        "deps": [
+          {
+            "src": "../dev/static/css/webApp/user/userList.css",
+            "res": []
+          },
+          {
+            "src": "../dev/static/css/webApp/user/userListInfo.css",
+            "res": []
           }
         ]
       }

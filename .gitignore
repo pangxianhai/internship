@@ -13,3 +13,6 @@ logs/
 db.sh
 .DS_Store
 *.war
+internship-static/pro/
+internship-web/src/main/webapp/static/
+internship-web/src/main/webapp/WEB-INF/views/
