@@ -1,5 +1,6 @@
 package cn.edu.swufe.lawschool.internship.web.controller.webApp;
 
+import cn.edu.swufe.lawschool.common.constants.SexType;
 import cn.edu.swufe.lawschool.internship.tutor.model.Tutor;
 import cn.edu.swufe.lawschool.internship.user.model.UserInfo;
 import cn.edu.swufe.lawschool.internship.user.model.UserType;
@@ -38,5 +39,18 @@ public class SysadminController {
         UserInfo adminUserInfo = userService.getUserInfoById(loginInfo.getId());
         modelMap.put("userInfo", adminUserInfo);
         return "webApp/sysadmin/sysadminMain";
+    }
+
+    /**
+     * 系统管理员个人中心
+     */
+    @RequestMapping(value = "/info.htm", method = RequestMethod.GET)
+    @LoginAccessPermission(UserType.SYS_ADMIN_CODE)
+    public String sysadminInfo(ModelMap modelMap) {
+        UserInfo loginInfo = loginService.getLoginUserInfo();
+        UserInfo adminUserInfo = userService.getUserInfoById(loginInfo.getId());
+        modelMap.put("adminUserInfo", adminUserInfo);
+        modelMap.put("sexes", SexType.getValues());
+        return "webApp/sysadmin/sysadminInfo";
     }
 }

@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Override
     public UserInfo login(String userName, String password) {
         UserInfo userInfo = getUserInfoByUerName(userName);
         if (userInfo == null) {
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public Long addUser(UserInfo userInfo) {
         UserInfo _userInfo = getUserInfoByUerName(userInfo.getUserName());
         if (_userInfo != null) {
@@ -63,10 +65,12 @@ public class UserServiceImpl implements UserService {
         return userInfo.getId();
     }
 
+    @Override
     public List<UserInfo> getUserInfo(UserInfo userInfo, Page page) {
         return userMapper.select(userInfo, page);
     }
 
+    @Override
     public UserInfo resetResetPassword(String userDestId, String operator) {
         Long userId = Long.parseLong(AESUtil.decrypt(userDestId));
         UserInfo userInfo = getUserInfoById(userId);
@@ -82,6 +86,7 @@ public class UserServiceImpl implements UserService {
         return userInfo;
     }
 
+    @Override
     public UserInfo changePassword(Long userId, String password, String operator) {
         UserInfo userInfo = getUserInfoById(userId);
         UserInfo _userInfo = new UserInfo();
@@ -92,6 +97,7 @@ public class UserServiceImpl implements UserService {
         return userInfo;
     }
 
+    @Override
     public UserInfo getUserInfoById(Long userId) {
         if (userId == null) {
             return null;
@@ -101,6 +107,7 @@ public class UserServiceImpl implements UserService {
         return selectOne(userInfo);
     }
 
+    @Override
     public UserInfo getUserInfoByUerName(String userName) {
         if (StringUtil.isEmpty(userName)) {
             return null;
@@ -110,12 +117,14 @@ public class UserServiceImpl implements UserService {
         return selectOne(userInfo);
     }
 
+    @Override
     public UserInfo getSysAdmin() {
         UserInfo userInfo = new UserInfo();
         userInfo.setUserType(UserType.SYS_ADMIN);
         return selectOne(userInfo);
     }
 
+    @Override
     public void update(UserInfo userInfo, String operator) {
         if (userInfo.getId() == null && StringUtil.isEmpty(userInfo.getUserName())) {
             throw new InternshipException(UserError.UPDATE_USER_KEY_ERROR);
@@ -128,6 +137,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void delete(Long userId) {
         if (userId == null) {
             throw new InternshipException(UserError.DELETE_USER_ID_EMPTY);
