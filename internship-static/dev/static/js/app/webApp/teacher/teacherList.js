@@ -58,6 +58,9 @@ define(function (require, exports, module) {
                 if (this.data.action == 'addStudent') {
                     operateHtml.push('<li class="tutor" item="assignTeacher"><div class="assign">分配带队老师</div></li>');
                 }
+                if (this.data.isSysadmin) {
+                    operateHtml.push('<li item="deleteTeacher" class="_delete">删除</li>');
+                }
                 html.push('<li  class="user_node" item="teacherNode" teacherName="' + teacher.name + '" teacherDesId="' + teacher.desId + '">');
                 html.push('<div class="operate" item="operate">');
                 html.push('<ul class="operate_list">' + operateHtml.join('') + '</ul>');
@@ -125,6 +128,35 @@ define(function (require, exports, module) {
             });
         },
 
+        bindDeleteTeacherAction: function () {
+            var assignTeacherNode = $('#teacherList [item="deleteTeacher"]');
+            assignTeacherNode.off('click');
+            assignTeacherNode.on('click', function (e) {
+                e.stopPropagation();
+                var thisTeacher = $(this).parents('.user_node');
+                Dialog.yes_no('你确定要删除该带队老师吗?', function () {
+                    $.ajax({
+                        url: '/teacher/delete.json',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            destId: thisTeacher.attr('teacherDesId')
+                        },
+                        success: function (result) {
+                            if (result.ret) {
+                                Dialog.push_ok_message('删除成功!');
+                                setTimeout(function () {
+                                    window.location.reload(true);
+                                }, 2000);
+                            } else {
+                                Dialog.push_error_message(result.message);
+                            }
+                        }
+                    });
+                });
+            });
+        },
+
         loadTeacherInfo: function (currentPage) {
             $.ajax({
                 url: '/teacher/list.json',
@@ -149,6 +181,7 @@ define(function (require, exports, module) {
                         teacherList.bindScrollAction();
                         teacherList.bindToTeacherDetailAction();
                         teacherList.bindAssignTeacherAction();
+                        teacherList.bindDeleteTeacherAction();
                     } else {
                         Dialog.push_error_message(result.message);
                     }
@@ -158,7 +191,9 @@ define(function (require, exports, module) {
         init: function () {
             this.data.action = $('#action').val();
             this.data.studentDesId = $('#studentDesId').val();
+            this.data.isSysadmin = $('#isSysadmin').val();
             this.loadTeacherInfo(1);
+
         }
     };
     teacherList.init();

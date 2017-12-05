@@ -20,6 +20,11 @@ header .header ul li.center {
     padding-top: 1rem;
 }
 
+.teacher_list_panel .user_list .user_node .operate .operate_list ._delete {
+    line-height: 4rem;
+    background-color: #F00;
+}
+
 .teacher_list_panel .user_list .user_node .user_show {
     height: 3.3rem;
 }
