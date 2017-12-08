@@ -81,6 +81,15 @@ define(function (require, exports, module) {
             return html.join('');
         },
 
+        bindToCompanyDetailAction: function () {
+            var studentNode = $('#companyList [item="companyNode"]');
+            studentNode.off('click');
+            studentNode.on('click', function () {
+                window.location.href = '/webApp/company/detail/' + $(this).attr('companyDesId') + '.htm?returnUrl='
+                    + encodeURIComponent(location.href);
+            });
+        },
+
         bindStudentAssignCompanyAction: function () {
             var assignCompanyNode = $('#companyList [item="assignCompany"]');
             assignCompanyNode.off('click');
@@ -145,6 +154,7 @@ define(function (require, exports, module) {
                         Page.loadSinglePage(page_data.currentPage, page_data.totalPage, $('#companyList'), CompanyList.loadCompanyListInfo);
                         CompanyList.bindCompanyInfoScroll();
                         CompanyList.bindStudentAssignCompanyAction();
+                        CompanyList.bindToCompanyDetailAction();
                     } else {
                         Dialog.push_error_message(result.message);
                     }
