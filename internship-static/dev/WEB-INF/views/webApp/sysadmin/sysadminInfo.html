@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <#assign title="我的信息"/>
+    <#include "/webApp/meta.html" />
+    <script coolie src="/static/js/lib/coolie.min.js"
+            data-config="/static/js/coolie-config.js"
+            data-main="app/webApp/sysadmin/sysadminInfo.js">
+    </script>
+    <!--coolie-->
+    <link href="/static/css/webApp/user/userInfo.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/webApp/sysadmin/sysadminInfo.css" rel="stylesheet" type="text/css"/>
+    <!--/coolie-->
+</head>
+<body>
+<div class="sysadmin_info_panel">
+    <#include "/webApp/header.html" />
+    <ul id="sysadminInfoList" class="user_list">
+        <li class="_node">
+            <p class="_tips">用户名</p>
+            <p class="_content">${adminUserInfo.userName}</p>
+        </li>
+        <li class="_node">
+            <p class="_tips">姓名</p>
+            <p class="_content">${adminUserInfo.name}</p>
+        </li>
+        <li id="sysadminPhoneNode" class="_node">
+            <p class="_tips">联系方式</p>
+            <p class="_content">${adminUserInfo.phone}</p>
+            <i class="_icon">&gt;</i>
+        </li>
+        <li id="sysadminSexNode" sexCode="${adminUserInfo.sex.code}" class="_node">
+            <p class="_tips">性别</p>
+            <p class="_content">${adminUserInfo.sex.desc}</p>
+            <i class="_icon">&gt;</i>
+        </li>
+        <li class="_node _last">
+            <a href="/webApp/bulletin/myBulletin.htm?returnUrl=${locationURL}">
+                <p class="_tips">我的公告</p>
+                <p class="_content">查看</p>
+                <i class="_icon">&gt;</i>
+            </a>
+        </li>
+    </ul>
+    <ul class="logout_panel user_list">
+        <li class="logout_node _node _last">
+            <a href="/login/logout.htm">退出登录</a>
+        </li>
+    </ul>
+</div>
+<#include "/webApp/footer.html" />
+<div id="updateSysadminSexPanel" class="sysadmin_update_panel">
+    <ul class="user_list">
+        <#list sexes as s>
+            <li class="_node <#if s_index == sexes?size - 1>_last</#if>" sexCode="${s.code}">
+                <p class="_tips">${s.desc}</p>
+                <i class="_icon">&#10003;</i>
+            </li>
+        </#list>
+    </ul>
+    <ul class="button_list">
+        <li class="_node">
+            <button item="cancelBtn">取消</button>
+        </li>
+    </ul>
+</div>
+<div id="updateSysadminPhonePanel" class="sysadmin_update_panel">
+    <input id="updateSysadminPhoneInput" type="text" value="${adminUserInfo.phone}"/>
+    <ul class="button_list">
+        <li class="_node">
+            <button item="saveBtn">保存</button>
+        </li>
+        <li class="_node">
+            <button item="cancelBtn">取消</button>
+        </li>
+    </ul>
+</div>
+<input id="show_header_left" type="hidden" value="false"/>
+<input id="footerMenuId" type="hidden" value="me"/>
+</body>
+</html>
